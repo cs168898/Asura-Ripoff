@@ -1,8 +1,26 @@
+
+:root{
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  
+  background-color: #242424;
+}
+
+body{
+  margin: 0;
+}
+
+
 /********** Header ***********/
 
 .header-wrapper{
- display: flex;
-
+  display: flex;
+  background-color: var(--theme-primary-color);
+  padding: 10px;
+  
 }
 
 .logo{
@@ -27,6 +45,164 @@
 
 .searchbar-and-avatar{
   float: right;
+  
+}
+
+/********** Home Page ***********/
+
+.homepage-wrapper{
+  display: grid;
+    grid-template-columns: 3fr 1fr; /* fr stands for flexible fractions , where it will distribute available space in the grid*/
+    gap: 20px;
+    padding: 20px;
+}
+
+/***** carousel *****/
+
+.carousel-wrapper{
+  grid-column: 1; /* Occupy the first column */
+  grid-row: 1; /* Occupy the first row */
+  height: 40vh;
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  
+}
+
+.carousel-wrapper .cover-picture{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  border: 1px solid white;
+  margin: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.carousel-wrapper .title{
+  grid-column: 2;
+  grid-row: 1;
+  border: 1px solid white;
+  margin: 20px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+.carousel-wrapper .description{
+  grid-column: 2 /-1;
+  grid-row: 2;
+  border: 1px solid white;
+  margin: 20px;
+  margin-top: 0;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+/***** main content *****/
+
+.main-content{
+  grid-column: 1; /* start at the first column*/
+  grid-row: 2; /* end at the second row */ 
+  min-height: 50vh; /* Use min-height instead of height */
+  border: 2px solid red;
+}
+
+.main-content .latest-updates{
+  margin: 20px;
+  background-color: white;
+  color: grey;
+  border-radius: 10px;
+  width: 7vw;
+  text-align: left;
+  
+}
+
+.main-content .latest-updates p{
+  padding: 5px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.main-content-inner{
+  display: grid;
+  border: 1px solid white;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 20px;
+  height: auto;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  height: auto; /* Make sure it grows with content */
+}
+
+.item {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  padding: 15px;
+  
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.main-content .item{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item .cover-picture{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  grid-row: 1/ span 2;
+}
+
+.item .title{
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.item .latest-chapters{
+  font-size: 0.9em;
+  color: #666;
+  grid-column: 2;
+}
+
+
+
+/**** sidebar ****/
+
+.sidebar{
+  grid-column: 2; /* Move sidebar to the second column */
+  grid-row: 1 / span 2; /* Span from the first row down to cover two rows */
+  height: 100%;
+  border: 2px solid red;
+}
+
+.sidebar .header{
+  padding: 5px;
+  font-size: 1em;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 20px;
+  background: white;
+  color: grey;
+}
+
+.sidebar .button-wrapper{
+  text-align: center;
+}
+
+.sidebar .items-grid{
+  margin: 20px;
 }
 
 
@@ -42,4 +218,12 @@
   display: inline;
   margin: 20px;
 
+}
+
+
+
+/****** CSS VARIABLES **********/
+
+:root{
+  --theme-primary-color: rgb(184, 68, 242);
 }

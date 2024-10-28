@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom';
 
 function Header(){
  //Insert javascript functionality here
@@ -13,9 +13,15 @@ function Header(){
             <div className='nav-bar'>
                 <nav>
                 <ul>
-                    <li><a href="default.asp">Home</a></li>
-                    <li><a href="news.asp">Bookmark</a></li>
-                    <li><a href="contact.asp">Comics</a></li>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/bookmark">Bookmarks</Link>
+                    </li>
+                    <li>
+                        <Link to="/comics">Comics</Link>
+                    </li>
                 </ul>
                 </nav>
             </div>
