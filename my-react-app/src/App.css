@@ -1,15 +1,30 @@
 /********** Header ***********/
 
 .header-wrapper{
-  width: 100vw;
+ display: flex;
+
 }
 
-.nav-bar nav{
-  text-align: center;
+.logo{
+  float: left;
+}
+
+.nav-bar{
+  margin: auto;
+}
+
+.nav-bar ul{
+  margin: 0;
+  margin-top: 10px;
+  
 }
 
 .nav-bar li{
   display: inline;
   margin: 20px;
+  
+}
 
+.searchbar-and-avatar{
+  float: right;
 }

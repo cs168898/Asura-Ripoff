@@ -8,7 +8,7 @@ function Header(){
         <>
         <div className='header-wrapper'>
             <div className='logo'>
-                enter logo here
+                <img src="../assets/asurascans.png" alt="Website Logo" />
             </div>
             <div className='nav-bar'>
                 <nav>
@@ -20,9 +20,9 @@ function Header(){
                 </nav>
             </div>
             <div className='searchbar-and-avatar'>
-
+                Searchbar and avatar
             </div>
-        </div>
+        </div> 
         </>
     )
 }
