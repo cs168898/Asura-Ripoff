@@ -238,15 +238,17 @@ body{
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
+  background-color: var(--theme-primary-color);
+  height: 10vh;
 }
 .footer-bar {
   text-align: center;
-}
+  padding-top: 10px;
+ }
 
 .footer-bar li{
-  display: inline;
+  display: inline-flex;
   margin: 20px;
-
 }
 
 
