@@ -28,3 +28,18 @@
 .searchbar-and-avatar{
   float: right;
 }
+
+
+/********** Footer ***********/
+.footer-wrapper{
+  width: 100%;
+}
+.footer-bar {
+  text-align: center;
+}
+
+.footer-bar li{
+  display: inline;
+  margin: 20px;
+
+}
