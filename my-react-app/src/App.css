@@ -13,3 +13,18 @@
   margin: 20px;
 
 }
+
+
+/********** Footer ***********/
+.footer-wrapper{
+  width: 100%;
+}
+.footer-bar {
+  text-align: center;
+}
+
+.footer-bar li{
+  display: inline;
+  margin: 20px;
+
+}
