@@ -17,7 +17,8 @@ body{
 /********** Header ***********/
 
 .header-wrapper{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: var(--theme-primary-color);
   padding: 10px;
   
@@ -36,18 +37,28 @@ body{
 
 .nav-bar{
   margin: auto;
+  color: white;
 }
 
 .nav-bar ul{
   margin: 0;
   margin-top: 10px;
-  
+  color: white;
 }
 
 .nav-bar li{
   display: inline;
   margin: 20px;
-  
+  color: white;
+}
+
+.nav-bar li :hover{
+  color: white;
+  text-decoration: underline;
+}
+
+.nav-bar li a{
+  text-decoration: none;
 }
 
 .searchbar-and-avatar{
@@ -55,20 +66,62 @@ body{
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-self: end;
 }
 
 .searchbar-and-avatar input{
   border-radius: 5px;
   background-color: var(--theme-background-color);
   width: 10vw;
-  height: 6vh;
+  height: 3vh;
 }
 
 .searchbar-and-avatar img{
   width: 2vw;
   
 }
-/********** Home Page ***********/
+
+/**************** Responsive Design for Phone (Header) ********************/
+@media screen and (max-width: 430px) {
+  .header-wrapper {
+    display: flex; /* Use flexbox for responsive alignment */
+    flex-direction: row; /* Stack elements vertically */
+    
+    justify-content: space-between; /* Space between items */
+    padding: 10px;
+    gap: 5px; /* Add space between items */
+  }
+
+  .logo img {
+    width: 100vw;
+    
+}
+
+.nav-bar ul {
+    display: none
+}
+
+
+.searchbar-and-avatar {
+    display: flex; /* Aligns search input and avatar horizontally */
+    align-items: center;
+    gap: 10px;
+}
+
+.searchbar-and-avatar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 50vw;
+}
+
+.searchbar-and-avatar img {
+    width: 10vw;
+    border-radius: 50%; /* Makes the image circular if it's square */
+}
+}
+
+/************************************************ Home Page **********************************************/
 
 .homepage-wrapper{
   display: grid;
@@ -91,7 +144,7 @@ body{
 
 .carousel-wrapper .cover-picture{
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 ;
   border: 1px solid white;
   margin: 20px;
   text-align: center;
@@ -235,6 +288,37 @@ body{
 }
 
 
+/**************** Responsive Design for Phone (Homepage) ********************/
+@media screen and (max-width: 430px) {
+
+  .homepage-wrapper{
+    display: block;
+  }
+
+  .sidebar{
+    display: none;
+  }
+
+  .carousel-wrapper{
+    max-width: 100vw;
+    
+  }
+
+  .main-content .latest-updates{
+    width: auto;
+  }
+
+  .main-content .latest-updates {
+    font-size: small;
+  }
+
+  .main-content{
+    margin-top: 20px;
+  }
+
+}
+
+
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
@@ -251,6 +335,21 @@ body{
   margin: 20px;
 }
 
+/************** Responsive design (Footer) **************/
+@media screen and (max-width: 430px) {
+  .footer-wrapper{
+    display: flex; /* Use flexbox for responsive alignment */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Add space between items */
+  }
+
+  .footer-bar ul{
+    justify-content: center; /* Center the nav-bar on mobile */
+    margin: 0;
+  }
+
+}
 
 
 /****** CSS VARIABLES **********/
