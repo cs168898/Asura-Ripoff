@@ -319,6 +319,104 @@ body{
 }
 
 
+/************************************* Specific Comic Page *******************************/
+
+.comic-info{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 40vh;
+  border: 2px red solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+.comic-info .cover-picture{
+  grid-row: 1/ span 3;
+}
+
+.comic-info .title{
+  border: 1px solid white;
+  grid-column: 2;
+}
+
+.comic-info .description{
+  border: 1px solid white;
+  margin-top: 10px;
+  grid-column: 2;
+}
+
+.button-wrapper{
+  display: flex;
+  grid-column: 2;
+  text-align: center;
+  gap: 10px;
+  border: 1px solid white;
+  margin-top: 10px;
+  
+}
+
+.button-wrapper button{
+  font-size: small;
+  text-align: center;
+  height: 5vh;
+  width: 10vw;
+  border: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comic-chapters{
+  grid-template-columns: 1fr 2fr;
+  min-height: 60vh;
+  border: 2px red solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+.comic-chapters .header{
+  background-color: white;
+  width: 10vw;
+  color: grey;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.comic-chapters .chapters{
+  border-top: 1px solid grey;
+  border: 1px solid white;
+  height: auto;
+  margin: 5px 0 10px 0;
+}
+
+.comic-chapters .chapter-item{
+  background: blue;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pagination-wrapper{
+  display: flex;
+ 
+  text-align: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid white;
+  margin-top: 10px;
+}
+
+.pagination-wrapper button{
+  font-size: small;
+  text-align: center;
+  height: 3vh;
+  width: 10vw;
+  border: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  
+}
+
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
