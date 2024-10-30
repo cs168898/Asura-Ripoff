@@ -417,6 +417,45 @@ body{
   
 }
 
+/************************ Responsive Design (Specific Comic Page) **************************/
+
+@media screen and (max-width: 430px) {
+
+.comic-info{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.comic-info .cover-picture{
+  justify-content: center;
+  text-align: center;
+}
+
+.comic-info .title{
+  text-align: center;
+}
+
+.comic-info .description{
+  text-align: center;
+}
+
+.comic-info .button-wrapper{
+  flex-direction: column;
+  align-items: center;
+}
+
+.comic-info button{
+  width: 80vw;
+}
+
+.comic-chapters .header{
+  width: 30vw;
+}
+
+
+}
+
 /************************ Legal Page **************************/
 
 .legal-page-inner{

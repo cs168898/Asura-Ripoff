@@ -14,7 +14,8 @@ function Specific_Comic(){
             <div className="comic-info">
 
                 <div className='cover-picture'>
-                    Cover Picture
+                    <img src="/" alt="Cover Picture" />
+                    
                 </div>
                 <div className="title">
                     Title
