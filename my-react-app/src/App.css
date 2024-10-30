@@ -345,6 +345,12 @@ body{
   grid-column: 2;
 }
 
+.comic-info .author{
+  border: 1px solid white;
+  margin-top: 10px;
+  grid-column: 2;
+}
+
 .button-wrapper{
   display: flex;
   grid-column: 2;

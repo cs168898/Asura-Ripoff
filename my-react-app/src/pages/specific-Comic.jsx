@@ -23,6 +23,9 @@ function Specific_Comic(){
                 <div className="description">
                     Description
                 </div>
+                <div className="author">
+                    Author
+                </div>
 
                 <div className="button-wrapper">
                     <button className='like-button'>Like</button>
