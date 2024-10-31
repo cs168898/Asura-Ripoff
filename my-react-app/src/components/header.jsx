@@ -10,7 +10,9 @@ function Header(){
         <>
         <div className='header-wrapper'>
             <div className='logo'>
+                <a href="/">
                 <img src={asurascan} alt="Website Logo" />
+                </a>
             </div>
             <div className='nav-bar'>
                 <nav>
@@ -30,7 +32,9 @@ function Header(){
             <div className='searchbar-and-avatar'>
 
                 <input type="text" placeholder='Search' />
+                <a href="/account">
                 <img src={personImg} alt="avatar" />
+                </a>
             </div>
         </div> 
         </>

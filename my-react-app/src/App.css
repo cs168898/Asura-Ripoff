@@ -20,7 +20,7 @@ body{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: var(--theme-primary-color);
-  padding: 10px;
+  padding: 0 10px 0 10px;
   
 }
 
@@ -31,8 +31,13 @@ body{
 }
 
 .logo img{
-  max-width: 10%;
   
+  max-width: 90%;
+}
+
+.logo a{
+  max-width: 10%;
+  max-height: fit-content;
 }
 
 .nav-bar{
@@ -491,6 +496,10 @@ body{
 
 /****************** Account Page ****************/
 
+.account-page-wrapper{
+  height: 80vh;
+}
+
 .account-page-inner{
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -517,22 +526,21 @@ body{
 
 .change-credentials-form{
   
-    grid-row: 2 / span 2 ; /* Span from row 2 across two rows */
+    
     border: 1px solid white;
 }
 
 .change-credentials-form form {
   display: grid;
-  grid-template-columns: 1fr 1fr 0.5fr; /* Label, input, button */
+  grid-template-columns: 1fr 1fr 1fr; /* Label, input, button */
   align-items: center;
   gap: 10px;
-  
+  margin: 0 20px 20px 20px;
 }
 
 .change-credentials-form label {
   text-align: right;
   font-size: 1em;
-  color: #333;
   color: white;
 }
 
@@ -540,6 +548,7 @@ body{
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: medium;
 }
 
 .change-credentials-form button {
@@ -549,7 +558,7 @@ body{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
+  width: 30%;
 }
 
 
@@ -630,12 +639,65 @@ body{
 
 }
 
+/*************** Specific Chapter ****************/
+
+.specific-chapter-wrapper{
+  height: auto;
+  border: 2px solid red;
+  margin: 20px;
+  padding: 10px;
+}
+
+.specific-chapter-wrapper .header{
+  height: auto;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+
+.specific-chapter-wrapper .chapter-title{
+  text-align: center;
+}
+
+.specific-chapter-wrapper .prev-next{
+  text-align: end;
+  
+}
+
+.specific-chapter-wrapper .prev-next button{
+  margin: 0 10px 0 0;
+  height: 5vh;
+}
+
+.specific-chapter-wrapper .content{
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+  border: 1px solid white;
+  height: auto;
+}
+
+.specific-chapter-wrapper .prev-next-footer{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.specific-chapter-wrapper .prev-next-footer button{
+  margin-left: 10px;
+  height: 5vh;
+}
+
+
  
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
   background-color: var(--theme-primary-color);
   height: 10vh;
+  bottom: 0;
+ 
 }
 .footer-bar {
   text-align: center;
