@@ -489,6 +489,69 @@ body{
   border: 1px solid white;
 }
 
+/****************** Account Page ****************/
+
+.account-page-inner{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  border: 2px red solid;
+  margin: 20px;
+  padding: 20px;
+  gap: 10px;
+
+}
+
+.account-page-inner .profile-picture{
+  grid-column: 1;
+ 
+  border: 1px solid white;
+}
+
+.account-page-inner .subscription-status{
+  grid-column: 2;
+  border: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
+
+.change-credentials-form{
+  
+    grid-row: 2 / span 2 ; /* Span from row 2 across two rows */
+    border: 1px solid white;
+}
+
+.change-credentials-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr; /* Label, input, button */
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.change-credentials-form label {
+  text-align: right;
+  font-size: 1em;
+  color: #333;
+  color: white;
+}
+
+.change-credentials-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.change-credentials-form button {
+  background-color: #888;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+}
+
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
