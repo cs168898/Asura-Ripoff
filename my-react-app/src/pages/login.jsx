@@ -29,7 +29,7 @@ function Login(){
                 <button type="submit" className="login-button">Login</button>
             </form>
             <p>OR</p>
-            <button type="submit" className="direct-to-signup">Click here to Sign Up</button>
+            <button className="direct-to-signup">Click here to Sign Up</button>
         </div>
         <Footer/>
         </>

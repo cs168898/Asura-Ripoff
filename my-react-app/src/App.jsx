@@ -8,6 +8,7 @@ import Specific_Comic from './pages/specific-Comic';
 import Legal from './pages/legal';
 import Account from './pages/account';
 import Login from './pages/login';
+import SignUp from './pages/signup';
 import Specific_Chapter from './pages/specific-chapter';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="legal" element={<Legal />}/>
         <Route path="account" element={<Account />}/>
         <Route path="login" element={<Login />}/>
+        <Route path="signup" element={<SignUp />}/>
         <Route path="specific-chapter" element={<Specific_Chapter />}/>
       </Routes>
     </Router>
