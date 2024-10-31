@@ -16,11 +16,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="specific-comic" element={<Specific_Comic />}/>
-        <Route path="legal" element={<Legal />}/>
-        <Route path="account" element={<Account />}/>
-        <Route path="login" element={<Login />}/>
-        <Route path="specific-chapter" element={<Specific_Chapter />}/>
+        <Route path="/specific-comic/:comicId" element={<Specific_Comic />} /> {/* Define `comicId` here */}
+        <Route path="/legal" element={<Legal />}/>
+        <Route path="/account" element={<Account />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/specific-comic/:comicId/chapter/:chapterId" element={<Specific_Chapter />} />
       </Routes>
     </Router>
   )
