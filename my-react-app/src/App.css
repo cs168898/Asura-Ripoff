@@ -652,6 +652,19 @@ body{
 
 }
 
+/******************Sign Up*********************/
+.signup-wrapper{
+  width: auto;
+  height: 55vh;
+  background-color: #666;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 100px 200px;
+  font-size: 20px;
+}
+
+
 /*************** Specific Chapter ****************/
 
 .specific-chapter-wrapper{
