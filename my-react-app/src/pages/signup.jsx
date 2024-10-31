@@ -1,42 +1,53 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import Login from './login'
 
 function SignUp() {
-    //insert js func
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        //js func
+        console.log('Form submitted');
+    };
 
     return(
         <>
             <Header/>
             <div className="signup-wrapper">
-                <form onSubmit="handleSuhmit">
-                    <label><b>Username: </b></label>
+                <form onSubmit={handleSubmit}>
+                    <label><b>Username: </b>
                     <input 
                         type="text"
                         name="username"
-                        /> <br />
-                    <label><b>Email: </b></label>
+                        />
+                    </label>
+                    <label><b>Email: </b>
                     <input
                         type="email"
                         name="email"
                         id="email"
-                        /> <br />
-                    <label><b>Password: </b></label>
+                        />
+                    </label>
+                    <label><b>Password: </b>
                     <input 
                         type="password" 
                         name="password" 
                         id="password" 
-                        /> <br />
-                    <label><b>Confirm Password: </b></label>
+                        />
+                    </label>
+                    <label><b>Confirm Password: </b>
                     <input 
                         type="password" 
                         name="password" 
                         id="password" 
-                        /> <br /> <br />
-                    <button type="submit">Sign Up now</button>
+                        />
+                    </label>
+                    <button type="submit" className="signup-button">Sign Up now</button>
                 </form>
                 <p><b>OR</b></p>
-                <button>Click here to Login</button>
+                <button onClick={() => navigate('/Login')} className="direct-to-login">Click here to Login</button>
             </div>
             <Footer/>
         </>

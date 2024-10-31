@@ -1,15 +1,22 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import SignUp from './signup'
 
 function Login(){
-    //insert js function
+    const navigate = useNavigate()
+
+    const handdleSubmit = (e) => {
+        //insert js func
+        console.log('Logged in');
+    };
 
     return(
         <>
         <Header/>
         <div className='login-wrapper'>
-            <form onSubmit="handdleSubmit">
+            <form onSubmit={handdleSubmit}>
                 <label><b>Username:</b> </label>
                 <input 
                     type="text"
@@ -29,7 +36,7 @@ function Login(){
                 <button type="submit" className="login-button">Login</button>
             </form>
             <p>OR</p>
-            <button className="direct-to-signup">Click here to Sign Up</button>
+            <button onClick={() => navigate('/SignUp')} className="direct-to-signup">Click here to Sign Up</button>
         </div>
         <Footer/>
         </>

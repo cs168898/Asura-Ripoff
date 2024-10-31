@@ -654,14 +654,44 @@ body{
 
 /******************Sign Up*********************/
 .signup-wrapper{
-  width: auto;
-  height: 55vh;
+  width: 75%;
+  max-width: 400vw;
+  height: auto;
   background-color: #666;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  margin: 100px 200px;
+  margin: 80px auto;
   font-size: 20px;
+  text-align: center;
+}
+
+.signup-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup-wrapper label{
+  width: 100%;
+  margin: 10px auto 10px;
+}
+.signup-wrapper input {
+  width: 40%;
+  padding: 10px;
+  margin: 10px;
+  font-size: 20px;
+  text-align: left;
+  align-items: start;
+}
+
+.signup-button, .direct-to-login {
+  width: 30%;
+  padding: 10px;
+  background-color: var(--theme-primary-color);
+  border-radius: 4px;
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  margin: 10px 10px 20px;
+  text-align: center;
 }
 
 
