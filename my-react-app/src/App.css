@@ -552,6 +552,85 @@ body{
   width: 50%;
 }
 
+
+/********* Login *************/
+.login-wrapper{
+  padding: 50px;
+  border: 1px solid var(--theme-primary-color);
+  background-color: #666;
+  text-align: center;
+  height: 55vh;
+  margin: 30px 350px;
+  font-size: 20px;
+  align-items: center;
+  width: auto;
+  }
+
+.login-wrapper input {
+  width: 55%;
+  padding: 10px;
+  margin: 40px 10px 15px;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper form label{
+  font-size: 20px;
+  display: inline;
+}
+
+.login-button, .direct-to-signup {
+  width: 40%;
+  padding: 10px;
+  background-color: var(--theme-primary-color);
+  border-radius: 4px;
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  margin: 10px 10px 20px;
+}
+
+/********** Responsive design (Login) **********/
+@media screen and (max-width: 430px) {
+  .login-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+    font-size: 15px;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+  .login-wrapper label, .login-wrapper form label {
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  .login-wrapper input {
+    padding: 8px;
+    font-size: 15px;
+    width: 100%;
+    margin: 0;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-button, .direct-to-signup {
+    width: 100%;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 8px;
+  }
+
+}
+
+ 
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
