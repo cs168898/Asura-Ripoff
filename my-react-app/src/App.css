@@ -144,7 +144,7 @@ body{
   border: 2px solid red;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  
+  height: auto;
 }
 
 .carousel-wrapper .cover-picture{
@@ -164,7 +164,7 @@ body{
   font-size: 1em;
   font-weight: bold;
   text-align: center;
-  
+  height: auto;
 }
 
 .carousel-wrapper .description{
@@ -229,11 +229,19 @@ body{
   text-align: center;
 }
 
+.item img{
+  max-width: 150px;
+}
+
 .main-content .item{
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
+.items-grid .item {
+  text-decoration: none;
+  color: white;
+}
 .item .cover-picture{
   display: flex;
   align-items: center;
