@@ -733,6 +733,12 @@ body{
   margin-top: 10px;
   border: 1px solid white;
   height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.specific-chapter-wrapper .content img{
+  margin: auto;
 }
 
 .specific-chapter-wrapper .prev-next-footer{

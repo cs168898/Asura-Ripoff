@@ -22,7 +22,7 @@ function App() {
         <Route path="/account" element={<Account />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="signup" element={<SignUp />}/>
-        <Route path="/specific-comic/:comicId/chapter/:chapterId" element={<Specific_Chapter />} />
+        <Route path="/specific-comic/:comicId/specific-chapter/:chapterId" element={<Specific_Chapter />} />
       </Routes>
     </Router>
   )
