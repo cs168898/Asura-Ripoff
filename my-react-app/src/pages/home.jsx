@@ -69,7 +69,7 @@ function Home() {
                                 comics.map((comic, index) => (
                                     
                                     <div className="item" key={index}>
-                                        <Link to={`/comic/${comic.comic_id}`} key={index} className="item">
+                                        <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
                                         <h2 className='title'>{comic.title || "No title available"}</h2>
                                         {comic.cover_page_url ? (
                                             <div className="cover-picture">
