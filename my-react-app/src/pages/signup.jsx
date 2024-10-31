@@ -21,6 +21,9 @@ function SignUp() {
                     <input 
                         type="text"
                         name="username"
+                        id="username"
+                        placeholder="Enter your username here"
+                        required
                         />
                     </label>
                     <label><b>Email: </b>
@@ -28,6 +31,8 @@ function SignUp() {
                         type="email"
                         name="email"
                         id="email"
+                        placeholder="Enter your email here"
+                        required
                         />
                     </label>
                     <label><b>Password: </b>
@@ -35,6 +40,8 @@ function SignUp() {
                         type="password" 
                         name="password" 
                         id="password" 
+                        placeholder="Enter your password here"
+                        required
                         />
                     </label>
                     <label><b>Confirm Password: </b>
@@ -42,6 +49,8 @@ function SignUp() {
                         type="password" 
                         name="password" 
                         id="password" 
+                        placeholder="Confirm your passsword here"
+                        required
                         />
                     </label>
                     <button type="submit" className="signup-button">Sign Up now</button>

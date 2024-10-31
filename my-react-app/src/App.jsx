@@ -10,6 +10,7 @@ import Account from './pages/account';
 import Login from './pages/login';
 import SignUp from './pages/signup';
 import Specific_Chapter from './pages/specific-chapter';
+import Comics from './pages/comics';
 
 function App() {
 
@@ -21,8 +22,9 @@ function App() {
         <Route path="/legal" element={<Legal />}/>
         <Route path="/account" element={<Account />}/>
         <Route path="/login" element={<Login />}/>
-        <Route path="signup" element={<SignUp />}/>
+        <Route path="/signup" element={<SignUp />}/>
         <Route path="/specific-comic/:comicId/specific-chapter/:chapterId" element={<Specific_Chapter />} />
+        <Route path="/comics" element={<Comics />}/>
       </Routes>
     </Router>
   )
