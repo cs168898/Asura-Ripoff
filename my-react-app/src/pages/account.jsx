@@ -1,8 +1,15 @@
 import Header from '../components/header'
 import Footer from '../components/footer';
+import React, { useState } from 'react';
+import Subscription_Modal from '../components/subscription-modal';
 
 function Account(){
     //insert js here
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return(
         <>
@@ -17,9 +24,11 @@ function Account(){
                     <div className="subscription-message">
                         Your account is NOT premium
                     </div>
-                    <button>Subscribe</button>
+                    <button onClick={openModal}>Subscribe</button>
                 </div>
-                
+                <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+                    
+                </Subscription_Modal>
 
             </div>
             <div className="change-credentials-form">
