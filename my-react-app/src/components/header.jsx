@@ -1,11 +1,58 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import personImg from '../assets/person.png';
 import asurascan from '../assets/Site-logo.webp';
+import axios from 'axios';
+
+
+
 
 function Header(){
- //Insert javascript functionality here
- 
+    
+
+    const [searchQuery, setSearchQuery] = useState(''); // State for search query
+
+    const [results, setResults] = useState([]); // State for search results
+    const [showResults, setShowResults] = useState(false); // Controls the popup visibility
+
+    // Fetch results from the API
+    const fetchResults = async (query) => {
+        try {
+            const response = await axios.get(`http://localhost/comic_backend/search_comics.php?query=${query}`);
+            setResults(response.data); // Set fetched results
+            console.log(`the filtered results is ${response.data}`)
+        } catch (error) {
+            console.error("Error fetching search results:", error);
+        }
+    };
+
+    // Handle change in search input and show results
+    const handleSearchChange = (event) => {
+        const query = encodeURIComponent(event.target.value.trim().toLowerCase());
+        setSearchQuery(query); // Update the search query state
+        setShowResults(!!query); // Show results only if there's a query
+
+        // Trigger the AJAX call only if the query is not empty
+        if (query) {
+            fetchResults(query);
+        } else {
+            setResults([]); // Clear results if the query is empty
+        }
+    };
+
+    // Close the popup when clicking outside of it
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.search-bar')) {
+                setShowResults(false); // Hide the results popup
+            }
+        };
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, []);
+
+
+
     return(
         <>
         <div className='header-wrapper'>
@@ -31,7 +78,35 @@ function Header(){
             </div>
             <div className='searchbar-and-avatar'>
 
-                <input type="text" placeholder='Search' />
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search comics..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        onFocus={() => setShowResults(!!searchQuery)} // Show results when input is focused
+                    /> 
+                    {/* Popup for displaying results */}
+                    {showResults && results.length > 0 && (
+                        <div className="results-popup">
+                            {results.map((comic, index) => (
+                                
+                                <div key={index} className="result-item">
+                                    <a href={`/specific-comic/${comic.comic_id}`}>
+
+                                    <img src={`http://localhost/uploads/${comic.cover_page_url}`} alt={`${comic.title} cover` }  />
+                                    <div>
+                                        <p>{comic.title}</p>
+                                        <p className='chapter-numbers'>{comic.chapters} Chapters</p>
+                                    </div>
+                                    
+                                    </a>
+                                </div>
+                                
+                            ))}
+                </div>
+                )}
+            </div>
                 <a href="/account">
                 <img src={personImg} alt="avatar" />
                 </a>

@@ -86,6 +86,56 @@ body{
   
 }
 
+.results-popup{
+  z-index: 1000;
+  position: absolute;
+  background-color: var(--theme-background-color);
+  width: 10vw;
+  overflow-y: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border: 1px solid white;
+  height: 50vh;
+}
+
+.result-item{
+  display: block; /* Make sure it’s a block element */
+  margin: 10px 0;
+  border-bottom: 1px solid var(--theme-primary-color);
+}
+
+.item-wrapper{
+  display: block;
+}
+
+.result-item .chapter-numbers{
+  color: grey;
+  margin-top: 5px;
+}
+
+.result-item p{
+  
+  margin: 0;
+    font-size: 14px;
+    color: white;
+}
+
+.result-item a{
+  
+  display: flex; /* Use flex to align child elements inside the link */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: 100%; /* Ensure it fills the result item */
+  height: 100%;
+  padding: 0 10px 5px 0;
+}
+
+.result-item img {
+  width: 50px; /* Set a fixed width for the image */
+  height: auto;
+  margin-right: 10px; /* Space between image and text */
+}
 /**************** Responsive Design for Phone (Header) ********************/
 @media screen and (max-width: 430px) {
   .header-wrapper {
