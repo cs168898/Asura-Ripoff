@@ -12,6 +12,7 @@ import SignUp from './pages/signup';
 import Specific_Chapter from './pages/specific-chapter';
 import Comics from './pages/comics';
 import Bookmarks from './pages/bookmarks';
+import ComicUploadForm from './pages/upload-comic';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/specific-comic/:comicId/specific-chapter/:chapterId" element={<Specific_Chapter />} />
         <Route path="/comics" element={<Comics />}/>
         <Route path="/bookmarks" element={<Bookmarks />}/>
+        <Route path="/upload-comic" element={<ComicUploadForm />}/>
       </Routes>
     </Router>
   )
