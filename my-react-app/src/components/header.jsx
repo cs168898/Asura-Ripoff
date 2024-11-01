@@ -94,7 +94,7 @@ function Header(){
                                 <div key={index} className="result-item">
                                     <a href={`/specific-comic/${comic.comic_id}`}>
 
-                                    <img src={`http://localhost/uploads/${comic.cover_page_url}`} alt={`${comic.title} cover` }  />
+                                    <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover` }  />
                                     <div>
                                         <p>{comic.title}</p>
                                         <p className='chapter-numbers'>{comic.chapters} Chapters</p>

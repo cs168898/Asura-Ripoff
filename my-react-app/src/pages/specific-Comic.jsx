@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // To access the comic ID from the URL
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import addBookmark from '../components/addBookmark';
 
 
 import Header from '../components/header'
@@ -12,7 +13,60 @@ function Specific_Comic(){
     const [comic, setComic] = useState(null);
     const [loading, setLoading] = useState(true); // State to track loading status
 
+
     console.log("Comic ID:", comicId); // Check if this is defined
+
+    // BookMark and like part
+
+    const [bookmarked, setBookmarked] = useState(false);
+    const [liked, setLiked] = useState(false); // Track whether the comic is liked
+    const [actionType, setActionType] = useState(''); // Stores either 'bookmarks' or 'likes'
+
+    //End of Bookmark and like part
+
+    useEffect(() => {
+        // Check if the comic is bookmarked on page load
+        axios.get(`http://localhost/comic_backend/bookmark.php?comic_id=${comicId}&action=bookmarks`, { withCredentials: true })
+            .then(response => setBookmarked(response.data.bookmarked))
+            .catch(error => console.error("Error checking bookmark status:", error));
+
+        // Check if the comic is liked on page load
+        axios.get(`http://localhost/comic_backend/bookmark.php?comic_id=${comicId}&action=likes`, { withCredentials: true })
+            .then(response => setLiked(response.data.liked))
+            .catch(error => console.error("Error checking like status:", error));
+    }, [comicId]);
+
+    const handleActionToggle = (type) => {
+        setActionType(type); // Set the actionType to either 'bookmarks' or 'likes'
+        console.log("Comic ID test:", comicId); // Check if comicId is defined here
+        console.log("Action Type:", type); // Log the action to ensure it’s set
+        
+        axios.post(
+            'http://localhost/comic_backend/bookmark.php',
+            { comic_id: comicId, action: type }, // Send action as part of the data
+            { withCredentials: true }
+        )
+        .then(response => {
+            if (response.data.success) {
+                if (type === 'bookmarks') {
+                    console.log(`the bookmark is ${response.data.bookmarks}`)
+                    setBookmarked(response.data.bookmarks);
+                } else if (type === 'likes') {
+                    console.log(`the liked is ${response.data.likes}`)
+                    setLiked(response.data.likes);
+                }
+            }
+        })
+        .catch(error => {
+            // Check if the error is due to unauthorized access (401 status)
+            if (error.response && error.response.status === 401) {
+                console.error("Error:", error.response.data.message);
+                alert(error.response.data.message); // Show alert to the user
+            } else {
+                console.error(`Error toggling ${type}:`, error);
+            }
+        });
+    };
 
     useEffect(() => {
         if (comicId) {
@@ -69,8 +123,12 @@ function Specific_Comic(){
                 </div>
 
                 <div className="button-wrapper">
-                    <button className='like-button'>Like</button>
-                    <button className='bookmark-button'>Bookmark</button>
+                    <button onClick={() => handleActionToggle('bookmarks')} className={bookmarked ? 'active' : ''}>
+                        {bookmarked ? 'Bookmarked' : 'Bookmark'}
+                    </button>
+                    <button onClick={() => handleActionToggle('likes')} className={liked ? 'active' : ''}>
+                        {liked ? 'Liked' : 'Like'}
+                    </button>
                 </div>
                 
 
