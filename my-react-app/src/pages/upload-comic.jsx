@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Header from '../components/header'
+import Footer from '../components/footer';
 
 function ComicUploadForm() {
     const [comicData, setComicData] = useState({
@@ -66,6 +68,11 @@ function ComicUploadForm() {
     };
 
     return (
+        <>
+        <Header />
+        <div className="upload-comic-page-wrapper">
+
+        
         <form onSubmit={handleSubmit} encType="multipart/form-data">
             {/* Title */}
             <div>
@@ -161,6 +168,9 @@ function ComicUploadForm() {
 
             <button type="submit">Upload Comic</button>
         </form>
+        </div>
+        <Footer />
+        </>
     );
 }
 

@@ -54,7 +54,7 @@ function Home() {
                         {/* Check if data is taken from database already, if it is then output the data */}
                         {comics && comics.length > 0 ? (
                             comics[0]['cover_page_url'] ? (
-                                <img src={`http://localhost/uploads/${comics[0].cover_page_url}`} alt={`${comics[0].title} cover` }  />
+                                <img src={`http://localhost/${comics[0].cover_page_url}`} alt={`${comics[0].title} cover` }  />
                             ) : (
                                 <p>No cover available</p>
                             )
@@ -96,7 +96,7 @@ function Home() {
                                         <h2 className='title'>{comic.title || "No title available"}</h2>
                                         {comic.cover_page_url ? (
                                             <div className="cover-picture">
-                                                <img src={`http://localhost/uploads/${comic.cover_page_url}`} alt={`${comic.title} cover`} />
+                                                <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover`} />
                                             </div>
                                             
                                         ) : (
@@ -136,7 +136,7 @@ function Home() {
                             <Link to={`/specific-comic/${comic.comic_id}`} key={comic.id} className="item-link">
                             <div className='comic-detail-wrapper'>
                                 
-                            <img src={`http://localhost/uploads/${comic.cover_page_url}`} alt={`${comic.title} cover`}  />
+                            <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover`}  />
 
                             <div className="title">{comic.title}</div>
                             <div className="chapters">{comic.chapters} Chapters</div>

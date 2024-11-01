@@ -31,6 +31,7 @@ function Account(){
                 </Subscription_Modal>
 
             </div>
+            
             <div className="change-credentials-form">
                     <form action="">
                         <label htmlFor="username" >Change Username: </label>
@@ -45,7 +46,14 @@ function Account(){
                         <input type="text" />
                         <button>Change</button>
                     </form>
-                </div>
+            </div>
+            <div className="upload-comics-wrapper">
+                <p>Want to upload your own comic?</p>
+                <a href="/upload-comic">
+                <button>Upload Comics</button>
+                </a>
+
+            </div>
         </div>
 
 

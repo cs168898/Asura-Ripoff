@@ -56,7 +56,7 @@ function Specific_Chapter() {
                 <div className="content">
                     {/* Loop through each image in the chapter */}
                     {comicImages.map((image, index) => {
-                        const srcUrl = `http://localhost/uploads/${encodeURIComponent(image.comic_title?.trim().toLowerCase())}/chapter${image.chapter_id}/${encodeURIComponent(image.image_url?.trim().toLowerCase())}`;
+                        const srcUrl = `http://localhost/${image.image_url?.trim().toLowerCase()}`;
                         
                         // Log the src URL inside the return statement
                         console.log("Image src URL:", srcUrl);

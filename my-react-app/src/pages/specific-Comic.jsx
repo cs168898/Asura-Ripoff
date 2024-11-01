@@ -49,7 +49,7 @@ function Specific_Comic(){
             <div className="comic-info">
 
                 <div className='cover-picture'>
-                    <img src={`http://localhost/uploads/${comic[0].cover_page}`} alt="Cover Picture" />
+                    <img src={`http://localhost/${comic[0].cover_page}`} alt="Cover Picture" />
                     
                 </div>
                 <div className="title">

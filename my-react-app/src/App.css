@@ -649,6 +649,12 @@ body{
 
 }
 
+.upload-comics-wrapper{
+  text-align: center;
+  font-weight: bold;
+  margin: 20px;
+}
+
 .account-page-inner .profile-picture{
   grid-column: 1;
  
@@ -966,6 +972,66 @@ body{
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+
+/************************ Upload Comics Page *********************/
+.upload-comic-page-wrapper{
+  padding: 50px;
+  border: 1px solid var(--theme-primary-color);
+  background-color: var(--theme-background-color);
+  text-align: center;
+  height: auto;
+  margin: 30px 350px;
+  font-size: 20px;
+  align-items: center;
+  width: auto;
+}
+
+.upload-comic-page-wrapper form{
+  display: grid;
+  grid-template-columns: 30vw 30vw;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.upload-comic-page-wrapper label{
+  font-size: 20px;
+  grid-column: 1;
+    text-align: end;
+}
+
+.upload-comic-page-wrapper input{
+  width: 55%;
+  padding: 10px;
+  margin: 40px 10px 15px;
+  font-size: 20px;
+  
+}
+
+.upload-comic-page-wrapper input[type=file]{
+  cursor: pointer;
+  margin: 0;
+}
+
+.upload-comic-page-wrapper textarea{
+  width: 20vw;
+  height: 20vh;
+  margin-top: 20px;
+  
+}
+
+.upload-comic-page-wrapper button{
+  grid-column: 1/ span 2;
+  justify-self: center;
+  width: 200px;
+  height: 50px;
+  background-color: var(--theme-primary-color);
+  border: transparent;
+  box-shadow: 1px 1px 1px 1px black;
+  cursor: pointer;
 }
 
  
