@@ -68,7 +68,7 @@ function Header(){
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/bookmark">Bookmarks</Link>
+                        <Link to="/bookmarks">Bookmarks</Link>
                     </li>
                     <li>
                         <Link to="/comics">Comics</Link>

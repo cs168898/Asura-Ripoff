@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-function Comics() {
+function Bookmarks() {
     const [comics, setComics] = useState([]);
 
     useEffect(() => {
@@ -30,4 +30,4 @@ function Comics() {
     );
 }
 
-export default Comics
+export default Bookmarks
