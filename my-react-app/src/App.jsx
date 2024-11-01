@@ -11,6 +11,7 @@ import Login from './pages/login';
 import SignUp from './pages/signup';
 import Specific_Chapter from './pages/specific-chapter';
 import Comics from './pages/comics';
+import Bookmarks from './pages/bookmarks';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/specific-comic/:comicId/specific-chapter/:chapterId" element={<Specific_Chapter />} />
         <Route path="/comics" element={<Comics />}/>
+        <Route path="/bookmarks" element={<Bookmarks />}/>
       </Routes>
     </Router>
   )
