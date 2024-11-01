@@ -2,6 +2,8 @@ import Header from '../components/header'
 import Footer from '../components/footer';
 import React, { useState } from 'react';
 import Subscription_Modal from '../components/subscription-modal';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Account(){
     //insert js here
@@ -10,6 +12,17 @@ function Account(){
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
+
+    const navigate = useNavigate();
+    const handleLogout = async () => {
+        try {
+            await axios.get('http://localhost/comic_backend/logout.php');
+            navigate('/'); 
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
+    };
+    
 
     return(
         <>
@@ -53,6 +66,9 @@ function Account(){
                 <button>Upload Comics</button>
                 </a>
 
+            </div>
+            <div className="logout-button">
+                <button onClick={handleLogout}> Log Out</button>
             </div>
         </div>
 
