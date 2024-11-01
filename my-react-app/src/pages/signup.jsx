@@ -17,7 +17,7 @@ function SignUp() {
             <Header/>
             <div className="signup-wrapper">
                 <form onSubmit={handleSubmit}>
-                    <label><b>Username: </b>
+                    <b>Username: </b>
                     <input 
                         type="text"
                         name="username"
@@ -25,8 +25,8 @@ function SignUp() {
                         placeholder="Enter your username here"
                         required
                         />
-                    </label>
-                    <label><b>Email: </b>
+                    
+                    <b>Email: </b>
                     <input
                         type="email"
                         name="email"
@@ -34,8 +34,8 @@ function SignUp() {
                         placeholder="Enter your email here"
                         required
                         />
-                    </label>
-                    <label><b>Password: </b>
+                    
+                    <b>Password: </b>
                     <input 
                         type="password" 
                         name="password" 
@@ -43,8 +43,8 @@ function SignUp() {
                         placeholder="Enter your password here"
                         required
                         />
-                    </label>
-                    <label><b>Confirm Password: </b>
+                    
+                    <b>Confirm Password: </b>
                     <input 
                         type="password" 
                         name="password" 
@@ -52,7 +52,7 @@ function SignUp() {
                         placeholder="Confirm your passsword here"
                         required
                         />
-                    </label>
+                    
                     <button type="submit" className="signup-button">Sign Up now</button>
                 </form>
                 <p><b>OR</b></p>

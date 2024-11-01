@@ -31,7 +31,7 @@ function Home() {
                         {/* Check if data is taken from database already, if it is then output the data */}
                         {comics && comics.length > 0 ? (
                             comics[0]['cover_page_url'] ? (
-                                <img src={`http://localhost/uploads/${comics[0].cover_page_url}`} alt={`${comics[0].title} cover`} />
+                                <img src={`http://localhost/uploads/${comics[0].cover_page_url}`} alt={`${comics[0].title} cover` }  />
                             ) : (
                                 <p>No cover available</p>
                             )

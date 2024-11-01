@@ -205,6 +205,8 @@ body{
 
 .main-content-inner{
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px; /* Space between items */
   border: 1px solid white;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -213,19 +215,18 @@ body{
 }
 
 .items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  
+  
+  display: grid; /* Ensure it's a grid container */
   gap: 20px;
-  height: auto; /* Make sure it grows with content */
+  height: auto; /* Grow with content */
 }
 
 .item {
-  display: grid;
-  grid-template-rows: auto auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   padding: 15px;
-  
-  border: 1px solid #ccc;
   text-align: center;
 }
 
@@ -233,10 +234,15 @@ body{
   max-width: 150px;
 }
 
-.main-content .item{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.item a{
+  border: 1px solid #ccc;
 }
+
+
+.main-content-inner .items-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
 
 .items-grid .item {
   text-decoration: none;
@@ -248,11 +254,24 @@ body{
   justify-content: center;
   font-weight: bold;
   grid-row: 1/ span 2;
+  height: 200px;
+  
+}
+
+.item .cover-picture img{
+  height: 200px ;
+  max-height: 200px;
+  max-width: 150px;
 }
 
 .item .title{
   font-size: 1em;
   font-weight: bold;
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  
 }
 
 .item .latest-chapters{
@@ -298,6 +317,7 @@ body{
 
 .sidebar .items-grid{
   margin: 20px;
+  border: 1px solid white;
 }
 
 
@@ -665,14 +685,20 @@ body{
 }
 
 .signup-wrapper form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 30vw 40vw;
   align-items: center;
+  text-align: center;
+  justify-content: center;
 }
-.signup-wrapper label{
-  width: 100%;
-  margin: 10px auto 10px;
+
+
+.signup-wrapper b{
+  grid-column: 1;
+  text-align: right;
 }
+
+
 .signup-wrapper input {
   width: 40%;
   padding: 10px;
@@ -680,6 +706,12 @@ body{
   font-size: 20px;
   text-align: left;
   align-items: start;
+  grid-column: 2;
+}
+
+.signup-wrapper button{
+  grid-column: 1/ span 2;
+  justify-self: center;
 }
 
 .signup-button, .direct-to-login {
@@ -722,11 +754,14 @@ body{
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
+  height: 10vh;
+  max-height: 10vh;
+  overflow: hidden;
 }
 
 .comic-cover {
   width: 100%;
-  height: auto;
+  height: 40vh;
   border-radius: 4px;
 }
 
