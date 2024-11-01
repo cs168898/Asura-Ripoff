@@ -6,6 +6,8 @@ import Footer from '../components/footer'
 import SignUp from './signup'
 import Home from './Home'
 
+axios.defaults.withCredentials = true;
+
 function Login(){
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -16,7 +18,7 @@ function Login(){
             try {
                 const response = await axios.get('http://localhost/comic_backend/check_session.php');
                 if (response.data.loggedIn) {
-                    navigate('/Comics');
+                    navigate('/');
                 }
             } catch (error) {
                 console.error("Session check error:", error);
@@ -36,13 +38,14 @@ function Login(){
         try {
             const response = await axios.post(
                 'http://localhost/comic_backend/login_user.php',
-                credentials,
+                JSON.stringify(credentials),
                 { headers: { 'Content-Type': 'application/json'}}
             );
 
             setMessage(response.data.message);
             if (response.data.success) {
-                navigate('/Comics');
+                console.log(response, response.data);
+                navigate('/');
             }
         } catch (error) {
             console.error("Login error:", error);
