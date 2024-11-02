@@ -205,8 +205,24 @@ function Account(){
 
                 <div className="subscription-status">
                     <div className="subscription-message">
-                        {user.is_premium ? ( 'Your account is premium!') : ('Your account is NOT premium')}
+                        {user.is_premium ? (
+                            <>
+                                <p>Your account is premium!</p>
+                                <p>You can now:</p>
+                                <div className="premium-list">
+                                    <ol>
+                                        <li>Search for products by their title or genre</li>
+                                        <li>Bookmark Comics</li>
+                                        <li>Like Comics</li>
+                                        <li>Access the latest chapters</li>
+                                    </ol>
+                                </div>
+                            </>
+                        ) : (
+                            <p>Your account is NOT premium</p>
+                        )}
                     </div>
+                    
                     <button onClick={(user.is_premium ? (null) : (openModal))}>{(user.is_premium ? ( 'Subscribed') : ('Subscribe'))}</button>
                 </div>
                 <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
@@ -250,21 +266,27 @@ function Account(){
 
                 <div className="upload-comics-wrapper">
                 <p>Want to upload your own comic?</p>
+                <div className="upload-checklist">
+                                    <ol>
+                                        <li>Ensure you are uploading a zipfile</li>
+                                        <li>Ensure zipfile contains main comic folder</li>
+                                        <li>Inside main comic folder should contain chapters folder with their name as the chapter number only</li>
+                                        <li>Inside the chapter folders contain the images for that chapter </li>
+                                    </ol>
+                                </div>
                 <a href="/upload-comic">
                 <button>Upload Comics</button>
                 </a>
 
-                
             </div>
             </div>
                 <div className="logout-button">
                 <button onClick={handleLogout}> Log Out</button>
             </div>
-            
+            <Footer />
         </div>
 
-
-        <Footer />
+        
 
         </>
     )

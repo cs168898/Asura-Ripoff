@@ -282,6 +282,20 @@ html, body {
   text-decoration: none;
   color: white;
 }
+
+.items-grid .item a{
+  padding: 0;
+}
+
+.item .border-wrapper{
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.border-wrapper:hover{
+  background-color: var(--theme-primary-color);
+}
+
 .item .cover-picture{
   display: flex;
   align-items: center;
@@ -318,6 +332,7 @@ html, body {
   font-size: 0.9em;
   color: #666;
   grid-column: 2;
+  color: var(--asura-description-text-color);
 }
 
 
@@ -688,7 +703,6 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr 1fr;
-  border: 2px red solid;
   margin: 20px;
   padding: 20px;
   gap: 10px;
@@ -698,25 +712,49 @@ html, body {
 .upload-comics-wrapper{
   text-align: center;
   font-weight: bold;
-  margin: 20px;
+  background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
 }
+
+.upload-comic-page-wrapper 
 
 .upload-comics-wrapper button{
   width: 200px;
   height: 30px;
 }
 
+.upload-checklist{
+  display: flex;
+  text-align: start;
+  justify-content: center;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.upload-checklist li{
+  margin-bottom: 10px;
+}
+
+
 .account-page-inner .profile-picture{
   grid-column: 1;
- 
-  border: 1px solid white;
+  background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .account-page-inner .subscription-status{
   grid-column: 2;
-  border: 1px solid white;
   padding: 10px;
   text-align: center;
+  background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
+}
+
+.subscription-status .premium-list{
+  display: flex;
+  text-align: start;
+  justify-content: center;
 }
 
 .subscription-status button{
@@ -732,9 +770,10 @@ html, body {
   height: auto;
 }
 .change-credentials-form{
-  
-    
-    border: 1px solid white;
+  padding: 10px;
+  background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
+  justify-self: center;
 }
 
 .change-credentials-form form {
@@ -742,7 +781,8 @@ html, body {
   grid-template-columns: 1fr 1fr 1fr; /* Label, input, button */
   align-items: center;
   gap: 10px;
-  margin: 0 20px 20px 20px;
+  margin: 20px;
+  
 }
 
 .change-credentials-form label {
@@ -765,12 +805,12 @@ html, body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 30%;
+  width: 50%;
 }
 
 .logout-button{
   text-align: center;
-  
+  margin-bottom: 20px;
 }
 
 .logout-button button{
@@ -993,10 +1033,7 @@ html, body {
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
   overflow: hidden;                /* Hide overflowed text */
-  
 }
-
-
 
 .comic-cover {
   width: 100%;
@@ -1186,7 +1223,6 @@ html, body {
   width: 100%;
   background-color: var(--theme-primary-color);
   height: 10vh;
-  bottom: 0;
  
 }
 .footer-bar {
@@ -1229,6 +1265,8 @@ html, body {
 }
 
 
+
+
 /****** CSS VARIABLES **********/
 
 :root{
@@ -1238,3 +1276,7 @@ html, body {
   --asura-description-text-color: rgb(162 162 162 );
 }
 
+button:not(.active):hover {
+  color: black ; /* Text color on hover */
+  cursor: pointer;
+}

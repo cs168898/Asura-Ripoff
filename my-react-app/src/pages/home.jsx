@@ -77,21 +77,24 @@ function Home() {
                                     
                                     <div className="item" key={index}>
                                         <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
-                                        <div className="title-wrapper">
-                                            <h2 className='title'>{comic.title || "No title available"}</h2>
-                                        </div>
-                                        
-                                        {comic.cover_page_url ? (
-                                            <div className="cover-picture">
-                                                <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover`} />
+                                        <div className="border-wrapper">
+                                            <div className="title-wrapper">
+                                                <h2 className='title'>{comic.title || "No title available"}</h2>
                                             </div>
                                             
-                                        ) : (
-                                            <p>No cover available</p>
-                                        )}
-                                        <div className="latest-chapters">
-                                                    <p>{comic.chapters} chapters</p>
+                                            {comic.cover_page_url ? (
+                                                <div className="cover-picture">
+                                                    <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover`} />
+                                                </div>
+                                                
+                                            ) : (
+                                                <p>No cover available</p>
+                                            )}
+                                            <div className="latest-chapters">
+                                                        <p>{comic.chapters} chapters</p>
+                                            </div>
                                         </div>
+                                       
                                         </Link>
                                     </div>
                                     

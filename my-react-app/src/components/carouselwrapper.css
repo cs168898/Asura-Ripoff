@@ -77,6 +77,10 @@
     font-size: x-large;
 }
 
+.carousel-wrapper .description{
+    color: var(--asura-description-text-color);
+}
+
 .carousel-wrapper .genre{
     text-align: center;
     color: var(--asura-description-text-color);
