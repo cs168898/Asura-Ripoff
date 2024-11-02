@@ -15,6 +15,7 @@
 
 .content-wrapper{
     display: flex;
+    color: white;
 }
 
 .carousel-wrapper.hovered .cover-picture,
