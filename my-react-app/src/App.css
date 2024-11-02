@@ -843,6 +843,13 @@ body{
 }
 
 /**********Comic*************/
+
+.bookmark-page-wrapper .header{
+  text-align: start;
+  font-size: large;
+  margin: 10px 0 10px 3vw;
+}
+
 .comic-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -852,6 +859,12 @@ body{
   width: auto;
   height: auto;
   margin: 30px 50px;
+  margin-top: 0;
+  position: relative;
+}
+
+.comic-wrapper a{
+  text-decoration: none;
 }
 
 .comic-card {
@@ -863,6 +876,7 @@ body{
   padding: 10px;
   background-color: var(--theme-primary-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  height: auto;
 }
 
 .comic-title {
@@ -870,15 +884,32 @@ body{
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
-  height: 10vh;
   max-height: 10vh;
   overflow: hidden;
 }
 
 .comic-cover {
   width: 100%;
-  height: 40vh;
+  height: auto;
   border-radius: 4px;
+}
+
+.no-bookmark-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Customize this to control how far it stretches out */
+}
+
+.no-bookmark-wrapper p{
+  margin: 5px 0 0 0;
+}
+
+.no-bookmark{
+  font-size: large;
+  text-wrap: nowrap;
+  text-align: center;
+  justify-self: center;
 }
 
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // To access the comic ID from the URL
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import addBookmark from '../components/addBookmark';
+
 
 
 import Header from '../components/header'
