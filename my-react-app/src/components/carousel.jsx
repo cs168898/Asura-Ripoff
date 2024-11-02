@@ -24,7 +24,7 @@ function CarouselWrapper({ comics }) {
             setCurrentIndex((prevIndex) =>
                 prevIndex === comics.length - 1 ? 0 : prevIndex + 1
             );
-        }, 9999999999); // Adjust slide interval as needed
+        }, 5000); // Adjust slide interval as needed
     };
 
     // Function to stop the auto-slide

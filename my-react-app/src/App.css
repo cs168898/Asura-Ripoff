@@ -1,6 +1,6 @@
 
 :root{
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -697,6 +697,10 @@ html, body {
 .account-page-wrapper h2{
   color: white;
   text-align: center;
+  font-family: "San Francisco";
+  font-weight: 400;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+  
  }
 
 .account-page-inner{
@@ -716,11 +720,14 @@ html, body {
   border-radius: 8px;
 }
 
-.upload-comic-page-wrapper 
 
-.upload-comics-wrapper button{
-  width: 200px;
-  height: 30px;
+
+.account-page-inner .upload-comics-wrapper button {
+  color: white ;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .upload-checklist{
@@ -769,6 +776,16 @@ html, body {
   width: auto;
   height: auto;
 }
+
+.profile-picture button{
+  padding: 7px 10px;
+
+}
+
+.profile-picture input{
+  padding: 7px 10px;
+}
+
 .change-credentials-form{
   padding: 10px;
   background-color: var(--theme-secondary-background-color);
@@ -818,6 +835,7 @@ html, body {
   height: 40px;
   background-color: var(--theme-primary-color);
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 

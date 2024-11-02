@@ -275,7 +275,7 @@ function Account(){
                                     </ol>
                                 </div>
                 <a href="/upload-comic">
-                <button>Upload Comics</button>
+                <button className='upload-comics-button'>Upload Comics</button>
                 </a>
 
             </div>
