@@ -1,7 +1,7 @@
 .carousel-wrapper {
     position: relative;
     width: 100%;
-    height: 500px; /* Adjust as needed */
+    height: 450px; /* Adjust as needed */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -10,13 +10,21 @@
     background-color: var(--theme-secondary-background-color);
     transition: background-color 0.5s ease;
     border-radius: 8px;
+    color: white;
+    
 }
+
+.content-wrapper{
+    height: 350px;
+    margin: 10px;
+}
+
 
 
 .content-wrapper{
-    display: flex;
-    color: white;
+    width: 100%;
 }
+
 
 .carousel-wrapper.hovered .cover-picture,
 .carousel-wrapper.hovered .title-description {
@@ -34,9 +42,28 @@
     
 }
 
-.title-description{
-    margin-right: 15px;
+
+.cover-picture{
+    background-color: transparent;
+    min-width: 270px;
+}
+
+.cover-picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    
+}
+
+.title-description {
+    
     padding: 10px;
+    text-align: center;
+    max-width: 500px; /* Limit text width to avoid overflow */
+    min-height: 100%;
+    margin: 0 10px 0 10px;
+    width: auto;
+    height: auto;
 }
 
 .carousel-wrapper .title{
@@ -87,13 +114,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Match width of .carousel-wrapper */
+    height: 100%; /* Match height of .carousel-wrapper */
     z-index: 2;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Optional: add a dark overlay */
 }
 
 .video-popup video {
@@ -101,6 +129,49 @@
     height: 100%;
     object-fit: cover;
 }
+
+.carousel-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.carousel-slide {
+    
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Hide overflow if content is too large */
+    max-height: 100%; /* Constrain height to fit within container */
+    height: 100%;
+    min-width: 100%;
+    
+}
+
+
+.pagination-dots {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var(--theme-primary-color);
+}
+
+
+
+/*************** Variables **************/
 
 :root{
     --theme-primary-color: rgb(158, 68, 242);

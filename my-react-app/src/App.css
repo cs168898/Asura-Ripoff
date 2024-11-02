@@ -9,7 +9,9 @@
   background-color: var(--theme-background-color);
 }
 
-body{
+/* Make the body full height */
+html, body {
+  height: 100%;
   margin: 0;
 }
 
@@ -84,6 +86,10 @@ body{
 .searchbar-and-avatar img{
   width: 50px;
 
+}
+
+.login-signup {
+  color: white;
 }
 
 .results-popup{
@@ -181,7 +187,7 @@ body{
 .homepage-wrapper{
   display: grid;
     grid-template-columns: 3fr 1fr; /* fr stands for flexible fractions , where it will distribute available space in the grid*/
-    grid-template-rows: 500px 1fr;
+    grid-template-rows: auto 1fr;
     gap: 20px;
     padding: 20px;
     height: auto;
@@ -611,12 +617,13 @@ body{
 .legal-page-inner{
   margin: 10px;
   padding: 10px;
-  border: 2px solid red;
+  
 }
 
 .legal-page-inner .header-wrapper{
-  border-bottom: 1px solid grey;
+
   background-color: transparent;
+  
 }
 
 .legal-page-inner .header{
@@ -628,9 +635,10 @@ body{
 }
 
 .legal-page-content{
-  margin-top: 30px;
+  margin-top: 10px;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid grey;
+  height: 70vh;
 }
 
 /****************** Account Page ****************/
@@ -730,11 +738,14 @@ body{
 
 .logout-button{
   text-align: center;
+  
 }
 
 .logout-button button{
   width: 200px;
   height: 40px;
+  background-color: var(--theme-primary-color);
+  border: 1px solid black;
 }
 
 
