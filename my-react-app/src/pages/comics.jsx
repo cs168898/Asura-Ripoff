@@ -2,10 +2,21 @@ import React, { useState, useEffect} from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Link } from 'react-router-dom';
+import useUserSession from '../components/check_session'; // Custom hook to check session
 
 function Comics() {
     const [comics, setComics] = useState([]);
     const [searchQuery, setSearchQuery] = useState(''); // Filter state
+    const { loggedIn, userId, username, loading } = useUserSession(); // Destructure loading status from custom hook
+
+    
+    useEffect(() => {
+        if (!loading && !loggedIn) {
+            // Redirect to login page if not logged in after loading
+            window.location.href = '/login';
+        }
+    }, [loading, loggedIn]); // Run effect when loading or loggedIn changes
+
 
     useEffect(() => {
         fetch('http://localhost/comic_backend/get_comics.php')

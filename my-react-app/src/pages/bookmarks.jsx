@@ -3,9 +3,18 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import useUserSession from '../components/check_session'; // Custom hook to check session
 
 function Bookmarks() {
     const [comics, setComics] = useState([]);
+    const { loggedIn, userId, username, loading } = useUserSession(); // Destructure loading status from custom hook
+
+    useEffect(() => {
+        if (!loading && !loggedIn) {
+            // Redirect to login page if not logged in after loading
+            window.location.href = '/login';
+        }
+    }, [loading, loggedIn]); // Run effect when loading or loggedIn changes
 
     useEffect(() => {
         axios.get('http://localhost/comic_backend/get_userbookmarks.php', { withCredentials: true })
