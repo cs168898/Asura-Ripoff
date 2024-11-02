@@ -77,6 +77,10 @@
     font-size: x-large;
 }
 
+.carousel-wrapper .description{
+    color: var(--asura-description-text-color);
+}
+
 .carousel-wrapper .genre{
     text-align: center;
     color: var(--asura-description-text-color);
@@ -97,6 +101,19 @@
     margin-top: 5px;
     width: 100%;
     margin: 0;
+}
+
+.mute-button{
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.mute-button img{
+    width: 25px;
+    color: white;
 }
 
 
