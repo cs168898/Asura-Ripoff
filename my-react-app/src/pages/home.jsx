@@ -11,21 +11,39 @@ function Home() {
     const [comics, setComics] = useState([]); // State to store the comics data
     const [activeButton, setActiveButton] = useState('all'); //Track the sidebar buttons
     const [sortedComics, setSortedComics] = useState([])
+    const [featuredComics, setFeaturedComics] = useState([]); // State to store featured comics data
+
+    // Fetch featured comics data for the carousel
+    useEffect(() => {
+        axios.get('http://localhost/comic_backend/get_featured_comics.php')
+            .then(response => {
+                console.log(response.data);  // Log to verify structure
+                setFeaturedComics(response.data); // Update the featured comics state
+            })
+            .catch(error => {
+                console.error("Error fetching featured comics:", error);
+            });
+    }, []);
 
     // Function to handle button click
     const handleButtonClick = (buttonId) => {
         setActiveButton(buttonId); // Set the clicked button as active
         
         if (buttonId === 'most-liked') {
-            // Sort by likes_count in descending order
-            setSortedComics([...comics].sort((a, b) => parseInt(b.likes_count) - parseInt(a.likes_count)));
-        } else if (buttonId ==='most-chapters') {
-            // Set back to the original comics list if another button is clicked
-            setSortedComics([...comics].sort((a, b) => parseInt(b.chapters) - parseInt(a.chapters)));
-        } else{
+            // Sort by likes_count in descending order and take top 5
+            setSortedComics([...comics]
+                .sort((a, b) => parseInt(b.likes_count) - parseInt(a.likes_count))
+                .slice(0, 5)
+            );
+        } else if (buttonId === 'most-chapters') {
+            // Sort by chapters in descending order and take top 5
+            setSortedComics([...comics]
+                .sort((a, b) => parseInt(b.chapters) - parseInt(a.chapters))
+                .slice(0, 5)
+            );
+        } else {
             setSortedComics(comics);
         }
-            
         
     };
 
@@ -64,7 +82,7 @@ function Home() {
 
             <div className="homepage-wrapper">
 
-            <CarouselWrapper comics={comics} />
+            <CarouselWrapper comics={featuredComics} />
 
                 <div className="main-content">
                     <div className="latest-updates">
@@ -130,7 +148,6 @@ function Home() {
 
                             <div className="title">{comic.title}</div>
                             <div className="chapters">{comic.chapters} Chapters</div>
-                            <div className="latest-chapters">{comic.genre}</div>
                             </div>
                             
                             

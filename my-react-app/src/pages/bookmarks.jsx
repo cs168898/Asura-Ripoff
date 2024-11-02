@@ -51,12 +51,13 @@ function Bookmarks() {
 
                 <div className="container">
 
-                    <div className="header">
-                        Bookmarks:
-                    </div>
+                    
                     <div className="comic-filter-wrapper">
                         
                         <div className="filter-bar">
+                            <div className="header">
+                            Bookmarks:
+                            </div>
                                         <input 
                                             type="text" 
                                             placeholder="Filter by title or genre..." 

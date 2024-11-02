@@ -192,15 +192,18 @@ function Account(){
             <div className="account-page-inner">
             
                 <div className="profile-picture">
-                    <img 
-                        src={profilePicUrl || 'http://localhost/uploads/profile-picture/person.png'} 
-                        alt="profile-picture"
-                        onError={(e) => {e.target.src = 'http://localhost/uploads/profile-picture/person.png'}}
-                     />
-                     <form onSubmit={handleProfilePictureSubmit}>
-                        <input type="file" accept="image/*" onChange={handleFileChange}/>                    
-                        <button type="submit">Upload Profile Picture</button>
-                     </form>
+                    <div className="profile-container">
+                        <img 
+                            src={profilePicUrl || 'http://localhost/uploads/profile-picture/person.png'} 
+                            alt="profile-picture"
+                            onError={(e) => {e.target.src = 'http://localhost/uploads/profile-picture/person.png'}}
+                        />
+                        <form onSubmit={handleProfilePictureSubmit}>
+                            <input type="file" accept="image/*" onChange={handleFileChange}/>                    
+                            <button type="submit">Upload Profile Picture</button>
+                        </form>
+                    </div>
+                    
                 </div>
 
                 <div className="subscription-status">

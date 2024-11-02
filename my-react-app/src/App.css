@@ -230,7 +230,7 @@ html, body {
 
 .main-content .latest-updates p{
   padding: 5px;
-  font-size: 1em;
+  font-size: small;
   text-align: center;
 }
 
@@ -349,7 +349,7 @@ html, body {
 
 .sidebar .header{
   padding: 5px;
-  font-size: 1em;
+  font-size: small;
   text-align: center;
   
   border-radius: 10px;
@@ -408,15 +408,16 @@ html, body {
   border: none;
 }
 
-.sidebar .cover-picture{
+.sidebar img{
   grid-row: 1;
-  width: 80px; /* Set fixed width for the cover image */
-    height: 80px; /* Set fixed height for the cover image */
+  width: 100px; /* Set fixed width for the cover image */
+    height: auto; /* Set fixed height for the cover image */
     
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .sidebar a .title{
@@ -434,7 +435,21 @@ html, body {
   background-color: var(--theme-primary-color);
 }
 
+.sidebar .synopsis{
+  overflow-y: auto;
+  height: 200px;
+  padding-right: 10px;
+}
 
+.sidebar .synopsis::-webkit-scrollbar{
+  width: 8px;
+  margin-left: 2px;
+}
+
+.sidebar .synopsis::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
 
 
 /**************** Responsive Design for Phone (Homepage) ********************/
@@ -485,6 +500,11 @@ html, body {
 .comic-info .cover-picture{
   grid-row: 1/ span 3;
   text-align: center;
+}
+
+.comic-info .cover-picture img{
+  width: 200px;
+  height: auto;
 }
 
 .upper-content .container{
@@ -720,8 +740,6 @@ html, body {
   border-radius: 8px;
 }
 
-
-
 .account-page-inner .upload-comics-wrapper button {
   color: white ;
   padding: 8px 10px;
@@ -742,12 +760,16 @@ html, body {
   margin-bottom: 10px;
 }
 
-
 .account-page-inner .profile-picture{
   grid-column: 1;
   background-color: var(--theme-secondary-background-color);
   border-radius: 8px;
   padding: 10px;
+  text-align: center;
+}
+
+.profile-container{
+  margin-top: 50px;
 }
 
 .account-page-inner .subscription-status{
@@ -981,6 +1003,14 @@ html, body {
   padding: 0;
 }
 
+.bookmark-page-wrapper .container{
+  height: 100vh;
+}
+
+.comics-page-wrapper .container{
+  height: 100vh;
+}
+
 .container{
   margin: 20px;
 }
@@ -998,10 +1028,12 @@ html, body {
 .comic-filter-wrapper{
   background-color: var(--theme-secondary-background-color);
   border-radius: 8px;
+  height: 100vh;
 }
 .filter-bar{
   text-align: end;
   padding: 10px;
+  display: flex;
 }
 
 .filter-bar input{
@@ -1009,6 +1041,8 @@ html, body {
   border-radius: 8px;
   border: 1px solid grey;
   padding: 10px;
+  margin-left: auto;
+  
 }
 
 .comic-wrapper {
@@ -1016,10 +1050,12 @@ html, body {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
   padding: 20px;
-  
+  background-color: var(--theme-background-color);
+  margin: 20px;
+  margin-bottom: 20px;
   width: auto;
   height: auto;
-
+  border-radius: 8px;
   margin-top: 0;
   position: relative;
 }
@@ -1032,12 +1068,14 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
-  background-color: var(--theme-primary-color);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   height: auto;
+  
+}
+
+.comic-card:hover{
+  background-color: var(--theme-primary-color);
 }
 
 .comic-title {

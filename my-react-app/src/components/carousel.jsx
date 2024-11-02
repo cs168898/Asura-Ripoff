@@ -100,7 +100,7 @@ function CarouselWrapper({ comics }) {
                     </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
-                        src="http://localhost/uploads/Solo Leveling _ OFFICIAL TRAILER.mp4"
+                        src="http://localhost/uploads/Omniscient Reader (Official Trailer) _ WEBTOON.mp4"
                         autoPlay
                         muted = {muted}
                         loop
@@ -129,7 +129,8 @@ function CarouselWrapper({ comics }) {
                     </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
-                        src="http://localhost/uploads/「The World After the Fall」 webtoon trailer (EN).mp4"
+                        
+                        src="http://localhost/uploads/Solo Leveling _ OFFICIAL TRAILER.mp4"
                         autoPlay
                         muted={muted}
                         loop
@@ -158,7 +159,7 @@ function CarouselWrapper({ comics }) {
                     </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
-                        src="http://localhost/uploads/Omniscient Reader (Official Trailer) _ WEBTOON.mp4"
+                        src="http://localhost/uploads/solo bug.mp4"
                         autoPlay
                         muted={muted}
                         loop

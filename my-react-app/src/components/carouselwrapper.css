@@ -45,12 +45,13 @@
 
 .carousel-slide .cover-picture{
     background-color: transparent;
-    min-width: 270px;
+    max-width: 500px;
+    max-height: 350px;
 }
 
 .carousel-slide .cover-picture img {
-    width: 100%;
-    height: auto;
+    max-width: 400px;
+    max-height: 350px;
     border-radius: 5px;
     
 }
@@ -60,7 +61,7 @@
     padding: 10px;
     text-align: center;
     max-width: 600px; /* Limit text width to avoid overflow */
-    min-height: 100%;
+    min-height: 300px;
     margin: 0 10px 0 10px;
     width: auto;
     height: auto;
@@ -79,7 +80,27 @@
 
 .carousel-wrapper .description{
     color: var(--asura-description-text-color);
+    font-size: small;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;       /* Limit to 3 lines, adjust as needed */
+    -webkit-box-orient: vertical;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 100px;
 }
+
+/* Style the scrollbar track */
+.carousel-wrapper .description::-webkit-scrollbar {
+    width: 8px;                 /* Width of the scrollbar */
+}
+
+
+/* Style the scrollbar thumb (the draggable part) */
+.carousel-wrapper .description::-webkit-scrollbar-thumb {
+    background: #888;            /* Color of the thumb */
+    border-radius: 10px;         /* Rounded corners */
+}
+
 
 .carousel-wrapper .genre{
     text-align: center;
@@ -158,7 +179,7 @@
 .video-popup video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit:cover;
 }
 
 .carousel-content {
@@ -194,10 +215,12 @@
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
+    z-index: 998;
 }
 
 .dot.active {
     background-color: var(--theme-primary-color);
+    z-index: 998;
 }
 
 
