@@ -54,7 +54,7 @@ function Comics() {
                                     value={searchQuery} 
                                     onChange={(e) => setSearchQuery(e.target.value)} 
                                 />
-                            </div>
+                        </div>
                         <div className="comic-wrapper">
                                 
                             {filteredComics.map((comic, index) => (

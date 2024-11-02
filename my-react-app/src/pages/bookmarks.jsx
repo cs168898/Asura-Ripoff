@@ -8,6 +8,7 @@ import useUserSession from '../components/check_session'; // Custom hook to chec
 function Bookmarks() {
     const [comics, setComics] = useState([]);
     const { loggedIn, userId, username, loading } = useUserSession(); // Destructure loading status from custom hook
+    const [searchQuery, setSearchQuery] = useState(''); // Filter state
 
     useEffect(() => {
         if (!loading && !loggedIn) {
@@ -31,36 +32,62 @@ function Bookmarks() {
             });
     }, []); // Empty dependency array to run only once on component mount
 
+    // Filter comics based on searchQuery
+    const filteredComics = comics.filter(comic => {
+        const titleMatch = comic.title.toLowerCase().includes(searchQuery.toLowerCase());
+
+        // Split genre string by comma, trim whitespace, and check if any genre matches the search query
+        const genreMatch = comic.genre.split(',').some(genre => 
+            genre.trim().toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        return titleMatch || genreMatch;
+    });
+
     return (
         <>
             <Header />
             <div className="bookmark-page-wrapper">
 
-            
-            <div className="header">
-                Bookmarks
-            </div>
-            <div className="comic-wrapper">
-                
-                {comics.length > 0 ? (
-                    comics.map((comic, index) => (
-                        <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
-                        <div key={comic.comic_id} className="comic-card">   
-                            <div className="comic-title">{comic.title}</div>
-                            <img 
-                                src={`http://localhost/${comic.cover_page_url}`} 
-                                alt={`${comic.title} Cover`} 
-                                className="comic-cover" 
-                            />
-                        </div>
-                        </Link>
-                    ))
-                ) : (
-                    <div className="no-bookmark-wrapper">
-                        <p className="no-bookmark">No bookmarked comics.</p>
+                <div className="container">
+
+                    <div className="header">
+                        Bookmarks:
                     </div>
-                )}
-            </div>
+                    <div className="comic-filter-wrapper">
+                        
+                        <div className="filter-bar">
+                                        <input 
+                                            type="text" 
+                                            placeholder="Filter by title or genre..." 
+                                            value={searchQuery} 
+                                            onChange={(e) => setSearchQuery(e.target.value)} 
+                                        />
+                                </div>
+                        
+                        <div className="comic-wrapper">
+                            
+                            {comics.length > 0 ? (
+                                filteredComics.map((comic, index) => (
+                                    <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
+                                    <div key={comic.comic_id} className="comic-card">   
+                                        <div className="comic-title">{comic.title}</div>
+                                        <img 
+                                            src={`http://localhost/${comic.cover_page_url}`} 
+                                            alt={`${comic.title} Cover`} 
+                                            className="comic-cover" 
+                                        />
+                                    </div>
+                                    </Link>
+                                ))
+                            ) : (
+                                <div className="no-bookmark-wrapper">
+                                    <p className="no-bookmark">No bookmarked comics.</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
             <Footer />
         </>

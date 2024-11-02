@@ -873,7 +873,6 @@ body{
 
 .bookmark-page-wrapper .header{
   text-align: start;
-  font-size: large;
   margin: 10px 0 10px 3vw;
 }
 
@@ -946,7 +945,7 @@ body{
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
-  height: 10vh;
+  height: 5vh;
   
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
@@ -1151,6 +1150,11 @@ body{
   text-align: center;
   padding-top: 10px;
  }
+
+.footer-bar a{
+  text-decoration: none;
+  color: white;
+}
 
 .footer-bar li{
   display: inline-flex;
