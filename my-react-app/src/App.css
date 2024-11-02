@@ -231,7 +231,7 @@ body{
 .main-content-inner{
   
   gap: 20px; /* Space between items */
-  border: 1px solid white;
+  background-color: #242424;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   margin: 20px;
@@ -240,7 +240,6 @@ body{
 
 .items-grid {
   display: grid; /* Ensure it's a grid container */
-
   height: auto; /* Grow with content */
 }
 
