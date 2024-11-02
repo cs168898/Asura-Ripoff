@@ -54,6 +54,25 @@ function Account(){
         });
     };
 
+    useEffect(() => {
+        async function fetchProfilePicture() {
+            try {
+                const response = await axios.get(
+                    `http://localhost/comic_backend/get_profile_picture.php`,
+                    { withCredentials: true }
+                );
+                if (response.data.success) {
+                    setProfilePicUrl(`http://localhost/${response.data.profile_picture}?${Date.now()}`);
+                }
+            } catch (error) {
+                console.error("Error fetching profile picture:", error);
+            }
+        }
+
+        if (loggedIn) {
+            fetchProfilePicture();
+        }
+    }, [loggedIn]);
     const handleFileChange = (e) => {
         setProfilePicture(e.target.files[0]);
     };
