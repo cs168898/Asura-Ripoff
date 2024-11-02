@@ -35,14 +35,16 @@ function Account(){
 
     // end of check if user is premium
 
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [message, setMessage] = useState('');
+    const [profilePicUrl, setProfilePicUrl] = useState(null);
+
     const [credentials, setCredentials] = useState({
         newUsername: '',
         newEmail: '',
         currentPassword:'',
         newPassword:''
     });
-
-    const [message, setMessage] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -52,24 +54,72 @@ function Account(){
         });
     };
 
+    useEffect(() => {
+        async function fetchProfilePicture() {
+            try {
+                const response = await axios.get(
+                    `http://localhost/comic_backend/get_profile_picture.php`,
+                    { withCredentials: true }
+                );
+                if (response.data.success) {
+                    setProfilePicUrl(`http://localhost/${response.data.profile_picture}?${Date.now()}`);
+                }
+            } catch (error) {
+                console.error("Error fetching profile picture:", error);
+            }
+        }
+
+        if (loggedIn) {
+            fetchProfilePicture();
+        }
+    }, [loggedIn]);
+    const handleFileChange = (e) => {
+        setProfilePicture(e.target.files[0]);
+    };
+
+    const handleProfilePictureSubmit = async (e) => {
+        e.preventDefault();
+        if (!profilePicture) {
+            setMessage("Please select a profile picture to upload.");
+            return;
+        }
+        const formData = new FormData();
+        formData.append('profile_picture', profilePicture);
+    
+        try {
+            const response = await axios.post(
+                'http://localhost/comic_backend/upload_profile_picture.php',
+                formData,
+                { headers: { 'Content-Type': 'multipart/form-data' }, withCredentials: true }
+            );
+            setMessage(response.data.message);
+            if (response.data.success) {
+                setProfilePicUrl(`http://localhost/uploads/profile-picture/profile_${userId}.jpg?${Date.now()}`);
+            }
+        } catch (error) {
+            console.error("Error uploading profile picture:", error);
+            setMessage("An error occurred while uploading the profile picture.");
+        }
+    };
+
     const handleUsernameSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post(
                 'http://localhost/comic_backend/change_username.php',
                 credentials,
-                { headers: { 'Content-Type': 'application/json'}, withCredentials: true}
+                { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
             );
             setMessage(response.data.message);
             setMessage("Username changed successfully!");
             if (response.data.success) {
-                setCredentials({...credentials, newUsername:''});
+                setCredentials({ ...credentials, newUsername: '' });
             }
         } catch (error) {
             console.error("Error changing credentials:", error);
             setMessage("An error occured. Please try again.");
         }
-    };
+    }
 
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
@@ -142,8 +192,17 @@ function Account(){
             <div className="account-page-inner">
             
                 <div className="profile-picture">
-                    <img src="/" alt="profile-picture" />
+                    <img 
+                        src={profilePicUrl || 'person.png'} 
+                        alt="profile-picture"
+                        onError={(e) => {e.target.src = '/person.jpg'}}
+                     />
+                     <form onSubmit={handleProfilePictureSubmit}>
+                        <input type="file" accept="image/*" onChange={handleFileChange}/>                    
+                        <button type="submit">Upload Profile Picture</button>
+                     </form>
                 </div>
+
                 <div className="subscription-status">
                     <div className="subscription-message">
                         {user.is_premium ? ( 'Your account is premium!') : ('Your account is NOT premium')}
