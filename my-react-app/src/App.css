@@ -230,7 +230,7 @@ body{
 
 .main-content-inner{
   
-  gap: 20px; /* Space between items */
+  
   background-color: #242424;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -254,11 +254,11 @@ body{
 
 .item img{
   max-width: 150px;
+  border-radius: 8px;
 }
 
-.item a{
-  border: 1px solid #ccc;
-  
+.main-content-inner .item{
+  padding: 10px 0 0 0;
 }
 
 
@@ -851,6 +851,16 @@ body{
   margin: 10px 0 10px 3vw;
 }
 
+.container{
+  margin: 20px;
+}
+
+.container .header{
+  margin-left: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 .comic-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -859,7 +869,7 @@ body{
   background-color: #888;
   width: auto;
   height: auto;
-  margin: 30px 50px;
+  border-radius: 8px;
   margin-top: 0;
   position: relative;
 }

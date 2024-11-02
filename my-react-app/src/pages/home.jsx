@@ -9,7 +9,7 @@ import CarouselWrapper from '../components/carousel';
 
 function Home() {
     const [comics, setComics] = useState([]); // State to store the comics data
-    const [activeButton, setActiveButton] = useState(null); //Track the sidebar buttons
+    const [activeButton, setActiveButton] = useState('all'); //Track the sidebar buttons
     const [sortedComics, setSortedComics] = useState([])
 
     // Function to handle button click
