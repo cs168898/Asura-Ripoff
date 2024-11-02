@@ -4,6 +4,8 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import { Link } from 'react-router-dom';
 
+import CarouselWrapper from '../components/carousel';
+
 
 function Home() {
     const [comics, setComics] = useState([]); // State to store the comics data
@@ -43,6 +45,18 @@ function Home() {
     }, []);
 
     
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+
+    
 
     return (
         <>
@@ -50,39 +64,7 @@ function Home() {
 
             <div className="homepage-wrapper">
 
-                <div className="carousel-wrapper">
-                    <div className="cover-picture">
-                        {/* Placeholder cover picture */}
-                        {/* Check if data is taken from database already, if it is then output the data */}
-                        {comics && comics.length > 0 ? (
-                            comics[0]['cover_page_url'] ? (
-                                <img src={`http://localhost/${comics[0].cover_page_url}`} alt={`${comics[0].title} cover` }  />
-                            ) : (
-                                <p>No cover available</p>
-                            )
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                        
-                    </div>
-                    
-                    {comics && comics.length > 0 ? (
-                            comics[0]['title'] || comics[0]['description'] || comics[0]['genre']? (
-                                <div className="title-description">
-                                    <div className="title">{comics[0]['title']}</div>
-                                    <div className="description">{comics[0]['synopsis']}</div>
-                                    <div className="genre">{comics[0]['genre']}</div>
-                                </div>
-                            ) : (
-                                <p>No comic available</p>
-                            )
-                        ) : (
-                            <p>Loading...</p>
-                        )}
-                        
-                    
-                    
-                </div>
+            <CarouselWrapper comics={comics} />
 
                 <div className="main-content">
                     <div className="latest-updates">

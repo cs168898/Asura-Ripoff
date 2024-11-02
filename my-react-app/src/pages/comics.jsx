@@ -19,7 +19,7 @@ function Comics() {
             {comics.map((comic) => (
                 <div key={comic.id} className="comic-card">   
                      <div className="comic-title">{comic.title}</div>
-                    <img src={`http://localhost/uploads/${comic.cover_page_url}`} alt={`${comic.title} Cover`} className="comic-cover" />
+                    <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} Cover`} className="comic-cover" />
                 </div> 
             )
         )} 

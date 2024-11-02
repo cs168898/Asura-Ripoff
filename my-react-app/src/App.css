@@ -181,6 +181,7 @@ body{
 .homepage-wrapper{
   display: grid;
     grid-template-columns: 3fr 1fr; /* fr stands for flexible fractions , where it will distribute available space in the grid*/
+    grid-template-rows: 500px 1fr;
     gap: 20px;
     padding: 20px;
     height: auto;
@@ -192,43 +193,14 @@ body{
   grid-column: 1; /* Occupy the first column */
   grid-row: 1; /* Occupy the first row */
   height: 40vh;
-  border: 2px solid red;
+  
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: auto;
+  position: relative;
   
 }
 
-.carousel-wrapper .cover-picture{
-  grid-column: 1;
-  grid-row: 1 ;
-  border: 1px solid white;
-  margin: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.carousel-wrapper .title{
-  grid-column: 2;
-  grid-row: 1;
-  border: 1px solid white;
-  margin: 20px;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  height: auto;
-}
-
-.carousel-wrapper .description{
-  grid-column: 2 /-1;
-  grid-row: 2;
-  border: 1px solid white;
-  margin: 20px;
-  margin-top: 0;
-  font-weight: bold;
-  text-align: center;
-  
-}
 
 /***** main content *****/
 
@@ -236,8 +208,8 @@ body{
   grid-column: 1; /* start at the first column*/
   grid-row: 2; /* end at the second row */ 
   min-height: auto; /* Use min-height instead of height */
-  border: 2px solid red;
   background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
 }
 
 .main-content .latest-updates{
@@ -320,10 +292,11 @@ body{
 
 .item .title-wrapper{
   display: -webkit-box;            /* Needed for multiline truncation */
+  
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
   overflow: hidden;                /* Hide overflowed text */
-  height: 11vh;
+  height: 7vh;
 }
 
 .item .title{
@@ -345,7 +318,7 @@ body{
   grid-column: 2; /* Move sidebar to the second column */
   grid-row: 1 / span 2; /* Span from the first row down to cover two rows */
   height: auto;
-  
+  border-radius: 8px;
   background-color: var(--theme-secondary-background-color);
 }
 
@@ -417,6 +390,8 @@ body{
 
 .sidebar a .title{
   margin-bottom: 10px;
+  overflow: hidden;
+  height: 50px;
 }
 
 .sidebar .chapters{
@@ -913,13 +888,20 @@ body{
 }
 
 .comic-title {
+  color: white;
   font-weight: bold;
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
-  max-height: 10vh;
-  overflow: hidden;
+  height: 10vh;
+  
+  -webkit-line-clamp: 2;           /* Number of lines to display */
+  -webkit-box-orient: vertical;    /* Specifies the box orientation */
+  overflow: hidden;                /* Hide overflowed text */
+  
 }
+
+
 
 .comic-cover {
   width: 100%;
