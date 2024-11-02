@@ -16,6 +16,38 @@ function Account(){
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    const [credentials, setCredentials] = useState({
+        newUsername: '',
+        newEmail: '',
+        currentPassword:'',
+        newPassword:''
+    });
+
+    const [message, setMessage] = useState('');
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials({
+            ...credentials,
+            [name]: value
+        });
+    };
+
+    const handleUsernameSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                'http://localhost/comic_backend/change_username.php',
+                credentials,
+                { headers: { 'Content-Type': 'application/json'}, withCredentials: true}
+            );
+            setMessage(response.data.message);
+        } catch (error) {
+            console.error("Error changing credentials:", error);
+            setMessage("An error occured. Please try again.");
+        }
+    };
+
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
@@ -35,6 +67,8 @@ function Account(){
         window.location.href = '/login';
         return null; // Prevent further rendering
     }
+
+    
 
     
 
@@ -62,10 +96,16 @@ function Account(){
             </div>
             
             <div className="change-credentials-form">
-                    <form action="">
-                        <label htmlFor="username" >Change Username: </label>
-                        <input type="text" />
-                        <button>Change</button>
+                    <form onSubmit={handleUsernameSubmit}>
+                        <label htmlFor="newUsername" >Change Username: </label>
+                        <input 
+                            type="text" 
+                            name="newUsername"
+                            value={credentials.newUsername}
+                            onChange={handleInputChange}
+                            placeholder="Enter new username"
+                         />
+                        <button type="submit">Change</button>
 
                         <label htmlFor="username">Change Password: </label>
                         <input type="text" />
