@@ -232,6 +232,7 @@ html, body {
   padding: 5px;
   font-size: small;
   text-align: center;
+  color: black;
 }
 
 .main-content-inner{
@@ -363,6 +364,7 @@ html, body {
 
 .sidebar .header p{
   margin: 0;
+  color: black;
 }
 
 
@@ -1084,7 +1086,7 @@ html, body {
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
-  height: 5vh;
+  height: 6vh;
   
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
