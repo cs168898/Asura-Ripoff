@@ -86,7 +86,7 @@ function Home() {
 
                 <div className="main-content">
                     <div className="latest-updates">
-                        <p>Latest updates</p>
+                        <p>All Comics</p>
                     </div>
                     <div className="main-content-inner">
                         <div className="items-grid">
@@ -95,7 +95,10 @@ function Home() {
                                     
                                     <div className="item" key={index}>
                                         <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
-                                        <h2 className='title'>{comic.title || "No title available"}</h2>
+                                        <div className="title-wrapper">
+                                            <h2 className='title'>{comic.title || "No title available"}</h2>
+                                        </div>
+                                        
                                         {comic.cover_page_url ? (
                                             <div className="cover-picture">
                                                 <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} cover`} />
@@ -120,7 +123,7 @@ function Home() {
 
                 <div className="sidebar">
                     <div className="header">
-                        <p>Popular</p>
+                        <p>Recommended</p>
                     </div>
                     <div className="button-wrapper">
                         <button className={activeButton === 'all'? 'active': '' } onClick={() => handleButtonClick('all')}>All</button>
