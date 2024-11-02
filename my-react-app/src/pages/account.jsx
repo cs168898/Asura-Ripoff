@@ -42,6 +42,48 @@ function Account(){
                 { headers: { 'Content-Type': 'application/json'}, withCredentials: true}
             );
             setMessage(response.data.message);
+            setMessage("Username changed successfully!");
+            if (response.data.success) {
+                setCredentials({...credentials, newUsername:''});
+            }
+        } catch (error) {
+            console.error("Error changing credentials:", error);
+            setMessage("An error occured. Please try again.");
+        }
+    };
+
+    const handlePasswordSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                'http://localhost/comic_backend/change_password.php',
+                credentials,
+                { headers: { 'Content-Type': 'application/json'}, withCredentials: true}
+            );
+            setMessage(response.data.message);
+            setMessage("Password changed successfully!");
+            if (response.data.success) {
+                setCredentials({...credentials, newPassword:''});
+            }
+        } catch (error) {
+            console.error("Error changing credentials:", error);
+            setMessage("An error occured. Please try again.");
+        }
+    };
+
+    const handleEmailSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                'http://localhost/comic_backend/change_email.php',
+                credentials,
+                { headers: { 'Content-Type': 'application/json'}, withCredentials: true}
+            );
+            setMessage(response.data.message);
+            setMessage("Email changed successfully!");
+            if (response.data.success) {
+                setCredentials({...credentials, newEmail:''});
+            }
         } catch (error) {
             console.error("Error changing credentials:", error);
             setMessage("An error occured. Please try again.");
@@ -106,14 +148,28 @@ function Account(){
                             placeholder="Enter new username"
                          />
                         <button type="submit">Change</button>
-
-                        <label htmlFor="username">Change Password: </label>
-                        <input type="text" />
-                        <button>Change</button>
-
-                        <label htmlFor="username">Change Email: </label>
-                        <input type="text" />
-                        <button>Change</button>
+                    </form>
+                    <form onSubmit={handlePasswordSubmit}>
+                        <label htmlFor="newPassword">Change Password: </label>
+                        <input 
+                            type="password"
+                            name="newPassword"
+                            value={credentials.newPassword}
+                            onChange={handleInputChange}
+                            placeholder="Enter new password"
+                        />
+                        <button type="submit">Change</button>
+                    </form>
+                    <form onSubmit={handleEmailSubmit}>
+                        <label htmlFor="newEmail">Change Email: </label>
+                        <input 
+                            type="email" 
+                            name="newEmail"
+                            value={credentials.newEmail}
+                            onChange={handleInputChange}
+                            placeholder="Enter new email"
+                        />
+                        <button type="submit">Change</button>
                     </form>
             </div>
             <div className="upload-comics-wrapper">
