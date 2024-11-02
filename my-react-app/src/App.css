@@ -661,6 +661,11 @@ body{
   margin: 20px;
 }
 
+.upload-comics-wrapper button{
+  width: 200px;
+  height: 30px;
+}
+
 .account-page-inner .profile-picture{
   grid-column: 1;
  
@@ -672,6 +677,12 @@ body{
   border: 1px solid white;
   padding: 10px;
   text-align: center;
+}
+
+.subscription-status button{
+  width: 200px;
+  height: 30px;
+  margin-top: 10px;
 }
 
 .profile-picture img {
@@ -715,6 +726,15 @@ body{
   border-radius: 5px;
   cursor: pointer;
   width: 30%;
+}
+
+.logout-button{
+  text-align: center;
+}
+
+.logout-button button{
+  width: 200px;
+  height: 40px;
 }
 
 

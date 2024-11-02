@@ -207,15 +207,12 @@ function Account(){
                     <div className="subscription-message">
                         {user.is_premium ? ( 'Your account is premium!') : ('Your account is NOT premium')}
                     </div>
-                    <button onClick={openModal}>Subscribe</button>
+                    <button onClick={(user.is_premium ? (null) : (openModal))}>{(user.is_premium ? ( 'Subscribed') : ('Subscribe'))}</button>
                 </div>
                 <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
                     
                 </Subscription_Modal>
-
-            </div>
-            
-            <div className="change-credentials-form">
+                <div className="change-credentials-form">
                     <form onSubmit={handleUsernameSubmit}>
                         <label htmlFor="newUsername" >Change Username: </label>
                         <input 
@@ -249,17 +246,21 @@ function Account(){
                         />
                         <button type="submit">Change</button>
                     </form>
-            </div>
-            <div className="upload-comics-wrapper">
+                </div>
+
+                <div className="upload-comics-wrapper">
                 <p>Want to upload your own comic?</p>
                 <a href="/upload-comic">
                 <button>Upload Comics</button>
                 </a>
 
+                
             </div>
-            <div className="logout-button">
+            </div>
+                <div className="logout-button">
                 <button onClick={handleLogout}> Log Out</button>
             </div>
+            
         </div>
 
 
