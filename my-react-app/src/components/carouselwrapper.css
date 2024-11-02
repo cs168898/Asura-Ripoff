@@ -32,7 +32,7 @@
     transition: opacity 0.3s ease;
 }
 
-.cover-picture,
+.carousel-slide.cover-picture,
 .title-description {
     position: relative;
     z-index: 1;
@@ -43,12 +43,12 @@
 }
 
 
-.cover-picture{
+.carousel-slide .cover-picture{
     background-color: transparent;
     min-width: 270px;
 }
 
-.cover-picture img {
+.carousel-slide .cover-picture img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -59,11 +59,17 @@
     
     padding: 10px;
     text-align: center;
-    max-width: 500px; /* Limit text width to avoid overflow */
+    max-width: 600px; /* Limit text width to avoid overflow */
     min-height: 100%;
     margin: 0 10px 0 10px;
     width: auto;
     height: auto;
+}
+
+.carousel-slide a{
+    text-decoration: none;
+    color: white;
+    padding: 0;
 }
 
 .carousel-wrapper .title{
@@ -73,6 +79,7 @@
 
 .carousel-wrapper .genre{
     text-align: center;
+    color: var(--asura-description-text-color);
 }
 
 .carousel-wrapper .chapters{
@@ -83,6 +90,13 @@
 .carousel-wrapper .likes{
     text-align: center;
     font-weight: bold;
+}
+
+.carousel-wrapper .notice{
+    font-size: x-small;
+    margin-top: 5px;
+    width: 100%;
+    margin: 0;
 }
 
 
@@ -177,5 +191,6 @@
     --theme-primary-color: rgb(158, 68, 242);
     --theme-background-color: #242424;
     --theme-secondary-background-color: rgb(49, 49, 49);
+    --asura-description-text-color: rgb(162 162 162 );
   }
   

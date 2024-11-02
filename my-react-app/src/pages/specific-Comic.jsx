@@ -121,38 +121,50 @@ function Specific_Comic(){
 
         <div className='specific-comic-page-wrapper'>
             <div className="comic-info">
+                <div className="upper-content">
+                    <div className='cover-picture'>
+                        <img src={`http://localhost/${comic[0].cover_page}`} alt="Cover Picture" />
+                        
+                    </div>
 
-                <div className='cover-picture'>
-                    <img src={`http://localhost/${comic[0].cover_page}`} alt="Cover Picture" />
-                    
-                </div>
-                <div className="title">
-                    
-                    {comic[0].comic_title ? (
-                        <p>{comic[0].comic_title}</p>
-                    ):
-                    <p> no comic title</p>
-                    }
-                    
-                </div>
-                <div className="description">
-                    <p>Synposis: <br />{comic[0].synopsis}</p>
-                </div>
-                <div className="author">
-                    <p>Author:  <br />{comic[0].author}</p>
-                </div>
+                    <div className="container">
+                        <div className="title">
+                            
+                            {comic[0].comic_title ? (
+                                <p>{comic[0].comic_title}</p>
+                            ):
+                            <p> no comic title</p>
+                            }
+                            
+                        </div>
+                        <div className="description">
+                            <p className='header'>Synposis: </p>
+                            <p>{comic[0].synopsis}</p>
+                        </div>
+                        <div className="author">
+                            <p className='header'>Author:  </p>
+                            <p>{comic[0].author}</p>
+                        </div>
+                        <div className="author">
+                            <p className='header'>Artist:  </p>
+                            <p>{comic[0].artist}</p>
+                        </div>
 
-                <div className="button-wrapper">
-                    <button onClick={() => handleActionToggle('bookmarks')} className={bookmarked ? 'active' : ''}>
-                        {bookmarked ? 'Bookmarked' : 'Bookmark'}
-                    </button>
-                    <button onClick={() => handleActionToggle('likes')} className={liked ? 'active' : ''}>
-                        {liked ? 'Liked' : 'Like'}
-                    </button>
-                </div>
-                
+                        <div className="button-wrapper">
+                            <button onClick={() => handleActionToggle('bookmarks')} className={bookmarked ? 'active' : ''}>
+                                {bookmarked ? 'Bookmarked' : 'Bookmark'}
+                            </button>
+                            <button onClick={() => handleActionToggle('likes')} className={liked ? 'active' : ''}>
+                                {liked ? 'Liked' : 'Like'}
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
 
+                </div>
             </div>
+                
             <div className="comic-chapters">
                 <div className="header">
                     List of chapters

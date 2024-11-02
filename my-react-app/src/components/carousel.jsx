@@ -1,13 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
 import './CarouselWrapper.css';
+import { Link } from 'react-router-dom';
 
 function CarouselWrapper({ comics }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const slideInterval = useRef(null);
+    const videoRef = useRef(null); // Reference for the video element
+
 
     // Function to start the auto-slide
     const startAutoSlide = () => {
+
+        // Clear any existing interval before starting a new one
+        if (slideInterval.current) {
+            clearInterval(slideInterval.current);
+        }
+
         slideInterval.current = setInterval(() => {
             setCurrentIndex((prevIndex) =>
                 prevIndex === comics.length - 1 ? 0 : prevIndex + 1
@@ -33,6 +42,11 @@ function CarouselWrapper({ comics }) {
     const handleCoverMouseEnter = () => {
         setIsHovered(true); // Start the video when hovering over cover picture
         stopAutoSlide();    // Stop auto-slide while the video is playing
+
+        if (videoRef.current) {
+            videoRef.current.currentTime = 0; // Reset video to start
+            videoRef.current.play(); // Ensure video starts playing
+        }
     };
 
     const handleWrapperMouseLeave = () => {
@@ -58,6 +72,7 @@ function CarouselWrapper({ comics }) {
                 {/* Different video sources for each index */}
                 {currentIndex === 0 && (
                     <video
+                        ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/Solo Leveling _ OFFICIAL TRAILER.mp4"
                         autoPlay
                         muted
@@ -66,6 +81,7 @@ function CarouselWrapper({ comics }) {
                 )}
                 {currentIndex === 1 && (
                     <video
+                        ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/「The World After the Fall」 webtoon trailer (EN).mp4"
                         autoPlay
                         muted
@@ -74,6 +90,7 @@ function CarouselWrapper({ comics }) {
                 )}
                 {currentIndex !== 0 && currentIndex !== 1 && (
                     <video
+                        ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/Omniscient Reader (Official Trailer) _ WEBTOON.mp4"
                         autoPlay
                         muted
@@ -106,16 +123,23 @@ function CarouselWrapper({ comics }) {
                                 ) : (
                                     <p>No cover available</p>
                                 )}
+                                    
                             </div>
 
                             {/* Comic details */}
+                            <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
+
                             <div className="title-description">
                                 <div className="title">{comic.title}</div>
                                 <div className="description">{comic.synopsis}</div>
                                 <div className="genre">{comic.genre}</div>
                                 <div className="chapters">{comic.chapters} Chapters</div>
                                 <div className="likes">{comic.likes_count} Likes</div>
+                                
+                                
                             </div>
+                            <div className="notice">*Hover over the image to watch the trailer</div>
+                            </Link>
                         </div>
                     ))}
                 </div>
