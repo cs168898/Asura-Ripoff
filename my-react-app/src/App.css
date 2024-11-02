@@ -638,6 +638,11 @@ body{
   height: 80vh;
 }
 
+.account-page-wrapper h2{
+  color: white;
+  text-align: center;
+ }
+
 .account-page-inner{
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -1084,3 +1089,4 @@ body{
   --theme-primary-color: rgb(158, 68, 242);
   --theme-background-color: #242424;
 }
+

@@ -4,10 +4,12 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import { Link } from 'react-router-dom';
 
+
 function Home() {
     const [comics, setComics] = useState([]); // State to store the comics data
     const [activeButton, setActiveButton] = useState(null); //Track the sidebar buttons
     const [sortedComics, setSortedComics] = useState([])
+
     // Function to handle button click
     const handleButtonClick = (buttonId) => {
         setActiveButton(buttonId); // Set the clicked button as active

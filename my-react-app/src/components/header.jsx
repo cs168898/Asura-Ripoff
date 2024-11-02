@@ -4,7 +4,7 @@ import personImg from '../assets/person.png';
 import asurascan from '../assets/Site-logo.webp';
 import axios from 'axios';
 
-
+import useUserSession from './check_session';
 
 
 function Header(){
@@ -14,6 +14,10 @@ function Header(){
 
     const [results, setResults] = useState([]); // State for search results
     const [showResults, setShowResults] = useState(false); // Controls the popup visibility
+    const { loggedIn, userId } = useUserSession(); // Destructure the session data
+    console.log(`User is logged in: ${loggedIn}, User ID: ${userId}`); // For debugging
+    
+    
 
     // Fetch results from the API
     const fetchResults = async (query) => {
@@ -85,6 +89,7 @@ function Header(){
                         value={searchQuery}
                         onChange={handleSearchChange}
                         onFocus={() => setShowResults(!!searchQuery)} // Show results when input is focused
+                        style={{ display: loggedIn ? 'block' : 'none' }} // Conditional display style based on loggedIn
                     /> 
                     {/* Popup for displaying results */}
                     {showResults && results.length > 0 && (
@@ -108,7 +113,14 @@ function Header(){
                 )}
             </div>
                 <a href="/account">
-                <img src={personImg} alt="avatar" />
+                
+                {loggedIn ? (
+                    // add user profile picture from DB below 
+                <img src="http://localhost//uploads/profile-picutre/person.png" alt="avatar picture" />
+            ) : (
+                <p>Login/Signup.</p>
+            )}
+                
                 </a>
             </div>
         </div> 
