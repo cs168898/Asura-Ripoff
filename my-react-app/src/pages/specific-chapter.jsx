@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom'; // To access the comic ID and chapter ID from the URL
+import { useParams, Link, useNavigate } from 'react-router-dom'; // To access the comic ID and chapter ID from the URL
 import axios from 'axios';
 
 import Header from '../components/header';
@@ -11,14 +11,20 @@ function Specific_Chapter() {
 
     const [comicImages, setComicImages] = useState([]); // Use a more descriptive state name
     const [loading, setLoading] = useState(true); // State to track loading status
+    const navigate = useNavigate();
+    const [prevChapterId, setPrevChapterId] = useState(null);
+    const [nextChapterId, setNextChapterId] = useState(null);
 
     useEffect(() => {
         if (comicId && chapterId) {
             // Make the API request only if both comicId and chapterId are available
             axios.get(`http://localhost/comic_backend/get_chapter_images.php?comic_id=${comicId}&chapter_id=${chapterId}`)
                 .then(response => {
-                    setComicImages(response.data.data || []); // Assuming data is nested in `data`
-                    console.log(response.data);
+                    const { data, prev_chapter_id, next_chapter_id } = response.data;
+
+                    setComicImages(data || []);
+                    setPrevChapterId(prev_chapter_id);
+                    setNextChapterId(next_chapter_id);
                     setLoading(false); // Set loading to false after data is loaded
                 })
                 .catch(error => {
@@ -39,6 +45,20 @@ function Specific_Chapter() {
         return <p>No images found for this chapter.</p>;
     }
 
+    const handlePrev = () => {
+        if (prevChapterId) {
+            navigate(`/specific-comic/${comicId}/specific-chapter/${prevChapterId}`);
+            window.location.reload();
+        }
+    };
+
+    const handleNext = () => {
+        if (nextChapterId) {
+            navigate(`/specific-comic/${comicId}/specific-chapter/${nextChapterId}`);
+            window.location.reload();
+        }
+    };
+
     return (
         <>
             <Header/>
@@ -48,8 +68,8 @@ function Specific_Chapter() {
                     <span className='chapter-number'>Chapter {chapterId}</span>
                     <span className='chapter-title'>Chapter Title</span>
                     <div className='prev-next'>
-                        <button>Prev</button>
-                        <button>Next</button>
+                        <button onClick={handlePrev} disabled={!prevChapterId}>Prev</button>
+                        <button onClick={handleNext} disabled={!nextChapterId}>Next</button>
                     </div>
                 </div>
 
@@ -72,8 +92,8 @@ function Specific_Chapter() {
                 </div>
 
                 <div className='prev-next-footer'>
-                    <button>Prev</button>
-                    <button>Next</button>
+                    <button onClick={handlePrev} disabled={!prevChapterId}>Prev</button>
+                    <button onClick={handleNext} disabled={!nextChapterId}>Next</button>
                 </div>
             </div>
 
