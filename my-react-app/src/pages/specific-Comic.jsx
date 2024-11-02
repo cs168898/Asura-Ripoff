@@ -167,7 +167,7 @@ function Specific_Comic(){
                             return (
                                 <div key={comic.id} className={`chapter-item ${restricted ? 'restricted' : ''}`}>
                                     {restricted ? (
-                                        <span className="restricted-text">Chapter {index + 1} - Subscribe to access</span>
+                                            <span className="restricted-text">Chapter {index + 1} - Subscribe to access</span>
                                     ) : (
                                         <Link to={`/specific-comic/${comic.comic_id}/specific-chapter/${comic.chapter_id}`}>
                                             Chapter {index + 1}
@@ -178,13 +178,6 @@ function Specific_Comic(){
                         })}
                     
                 </div>
-                <div className="pagination-wrapper">
-                    <div className="pagination-buttons-wrapper">
-                        <button>Prev</button>
-                        <button>Next</button>
-                    </div>
-                </div>
-
             </div>
         </div>
 

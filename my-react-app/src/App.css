@@ -512,6 +512,7 @@ body{
 .comic-chapters{
   grid-template-columns: 1fr 2fr;
   min-height: 60vh;
+  height: auto;
   border: 2px red solid;
   margin: 20px;
   padding: 10px;
@@ -535,8 +536,29 @@ body{
 .comic-chapters .chapter-item{
   background: var(--theme-primary-color);
   margin: 10px;
-  padding: 5px;
   border-radius: 5px;
+  position: relative;
+  height: 6vh;
+}
+
+.chapter-item a{
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  text-decoration: none;
+  color: white;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 0;
+}
+
+.chapter-item.restricted{
+  background-color: grey;
+  height: inherit;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  
 }
 
 .comic-chapters .chapter-item p{
