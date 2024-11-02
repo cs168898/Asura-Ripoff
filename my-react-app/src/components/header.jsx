@@ -12,6 +12,7 @@ function Header(){
 
     const [searchQuery, setSearchQuery] = useState(''); // State for search query
 
+    const [profilePicUrl, setProfilePicUrl] = useState(null);
     const [results, setResults] = useState([]); // State for search results
     const [showResults, setShowResults] = useState(false); // Controls the popup visibility
     const { loggedIn, userId } = useUserSession(); // Destructure the session data
@@ -55,7 +56,28 @@ function Header(){
         return () => document.removeEventListener('click', handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        async function fetchProfilePicture() {
+            try {
+                const response = await axios.get(
+                    `http://localhost/comic_backend/get_profile_picture.php`,
+                    { withCredentials: true }
+                );
+                if (response.data.success) {
+                    setProfilePicUrl(`http://localhost/${response.data.profile_picture}?${Date.now()}`);
+                }
+            } catch (error) {
+                console.error("Error fetching profile picture:", error);
+            }
+        }
 
+        if (loggedIn) {
+            fetchProfilePicture();
+        }
+    }, [loggedIn]);
+    const handleFileChange = (e) => {
+        setProfilePicture(e.target.files[0]);
+    };
 
     return(
         <>
@@ -116,7 +138,7 @@ function Header(){
                 
                 {loggedIn ? (
                     // add user profile picture from DB below 
-                <img src="http://localhost//uploads/profile-picutre/person.png" alt="avatar picture" />
+                <img src={profilePicUrl} alt="profile picture" />
             ) : (
                 <p>Login/Signup.</p>
             )}
