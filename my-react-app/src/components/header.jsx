@@ -32,7 +32,7 @@ function Header(){
 
     // Handle change in search input and show results
     const handleSearchChange = (event) => {
-        const query = encodeURIComponent(event.target.value.trim().toLowerCase());
+        const query = event.target.value.toLowerCase();
         setSearchQuery(query); // Update the search query state
         setShowResults(!!query); // Show results only if there's a query
 

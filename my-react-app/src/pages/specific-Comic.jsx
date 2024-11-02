@@ -4,15 +4,32 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-
 import Header from '../components/header'
 import Footer from '../components/footer';
+import useUserSession from '../components/check_session';
 
 function Specific_Comic(){
     const { comicId } = useParams(); // Extract the comicId from the URL parameters
     const [comic, setComic] = useState(null);
     const [loading, setLoading] = useState(true); // State to track loading status
+    const [user, setUser] = useState({ is_premium: false }); // Placeholder for user data
 
+    const session = useUserSession(); // Assume useUserSession returns an object with login status
+    
+    useEffect(() => {
+        
+        if (session.loggedIn) {
+            axios.get(`http://localhost/comic_backend/is_premium.php`, { withCredentials: true })
+            .then(response => setUser({ is_premium: response.data.is_premium === 1 }))
+            
+            .catch(error => console.error("Error checking bookmark status:", error));
+            
+        } else {
+            setUser({ is_premium: false });
+        }
+    }, [session.loggedIn, comicId]);
+    
+    console.log(`is acc premium? ${user.is_premium}`)
 
     console.log("Comic ID:", comicId); // Check if this is defined
 
@@ -25,6 +42,7 @@ function Specific_Comic(){
     //End of Bookmark and like part
 
     useEffect(() => {
+        
         // Check if the comic is bookmarked on page load
         axios.get(`http://localhost/comic_backend/bookmark.php?comic_id=${comicId}&action=bookmarks`, { withCredentials: true })
             .then(response => setBookmarked(response.data.bookmarked))
@@ -95,6 +113,8 @@ function Specific_Comic(){
         return <p>Loading...</p>;
     }
 
+    const latestChapter = comic ? comic[comic.length - 1] : null;
+
     return(
         <>
         <Header/>
@@ -138,18 +158,24 @@ function Specific_Comic(){
                     List of chapters
                 </div>
                 <div className="chapters">
-                    {/* Use loop to loop through chapters */}
-                    
-                    {comic.map((comic, index) => (
-                        <div className="chapter-item">
-                        <Link to={`/specific-comic/${comic.comic_id}/specific-chapter/${comic.chapter_id}`} key={index} >
-                            <p>Chapter {index + 1}</p>
-                        </Link>
-                        </div>
-                    )
-                    )
-                    }
-                    
+
+                    {comic.map((comic, index) => {
+                            // Apply restricted styling and remove link for the latest chapter if the user is not subscribed
+                            const isLatestChapter = comic.chapter_id === latestChapter.chapter_id;
+                            const restricted = !user.is_premium && isLatestChapter;
+
+                            return (
+                                <div key={comic.id} className={`chapter-item ${restricted ? 'restricted' : ''}`}>
+                                    {restricted ? (
+                                        <span className="restricted-text">Chapter {index + 1} - Subscribe to access</span>
+                                    ) : (
+                                        <Link to={`/specific-comic/${comic.comic_id}/specific-chapter/${comic.chapter_id}`}>
+                                            Chapter {index + 1}
+                                        </Link>
+                                    )}
+                                </div>
+                            );
+                        })}
                     
                 </div>
                 <div className="pagination-wrapper">
