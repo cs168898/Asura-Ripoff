@@ -7,6 +7,9 @@ function CarouselWrapper({ comics }) {
     const [isHovered, setIsHovered] = useState(false);
     const slideInterval = useRef(null);
     const videoRef = useRef(null); // Reference for the video element
+    const [muted, setMuted] = useState(true)
+    const [volume, setVolume] = useState(0.2); // Initial volume set to 50%
+    
 
 
     // Function to start the auto-slide
@@ -21,7 +24,7 @@ function CarouselWrapper({ comics }) {
             setCurrentIndex((prevIndex) =>
                 prevIndex === comics.length - 1 ? 0 : prevIndex + 1
             );
-        }, 5000); // Adjust slide interval as needed
+        }, 9999999999); // Adjust slide interval as needed
     };
 
     // Function to stop the auto-slide
@@ -51,6 +54,7 @@ function CarouselWrapper({ comics }) {
 
     const handleWrapperMouseLeave = () => {
         setIsHovered(false); // Stop the video when leaving the carousel wrapper
+        setMuted(true);
         startAutoSlide();    // Resume auto-slide when the mouse leaves
     };
 
@@ -59,6 +63,11 @@ function CarouselWrapper({ comics }) {
         stopAutoSlide(); // Optionally stop auto-slide when clicking a dot
         startAutoSlide(); // Restart the auto-slide after clicking
     };
+
+    if (videoRef.current) {
+        videoRef.current.volume = volume; // Apply the state value to video volume
+    }
+    
 
     return (
         <div
@@ -71,31 +80,91 @@ function CarouselWrapper({ comics }) {
             }}>
                 {/* Different video sources for each index */}
                 {currentIndex === 0 && (
+                    <>
+                    <button
+                        onClick={() => {
+                            setMuted((prevMuted) => {
+                                const newMuted = !prevMuted;
+                                if (videoRef.current) {
+                                    videoRef.current.muted = newMuted; // Directly set muted on video element
+                                }
+                                return newMuted;
+                            });
+                        }}
+                        className="mute-button"
+                    >
+                        <img
+                            src={muted ? 'http://localhost/uploads/component_images/no-sound.png' : 'http://localhost/uploads/component_images/volume.png'}
+                            alt={muted ? 'Unmute' : 'Mute'}
+                        />
+                    </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/Solo Leveling _ OFFICIAL TRAILER.mp4"
                         autoPlay
-                        muted
+                        muted = {muted}
                         loop
+                        volume = {volume}
                     />
+                    </>
                 )}
                 {currentIndex === 1 && (
+                    <>
+                    <button
+                        onClick={() => {
+                            setMuted((prevMuted) => {
+                                const newMuted = !prevMuted;
+                                if (videoRef.current) {
+                                    videoRef.current.muted = newMuted; // Directly set muted on video element
+                                }
+                                return newMuted;
+                            });
+                        }}
+                        className="mute-button"
+                    >
+                        <img
+                            src={muted ? 'http://localhost/uploads/component_images/no-sound.png' : 'http://localhost/uploads/component_images/volume.png'}
+                            alt={muted ? 'Unmute' : 'Mute'}
+                        />
+                    </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/「The World After the Fall」 webtoon trailer (EN).mp4"
                         autoPlay
-                        muted
+                        muted={muted}
                         loop
+                        volume = {volume}
                     />
+                    </>
                 )}
                 {currentIndex !== 0 && currentIndex !== 1 && (
+                    <>
+                    <button
+                        onClick={() => {
+                            setMuted((prevMuted) => {
+                                const newMuted = !prevMuted;
+                                if (videoRef.current) {
+                                    videoRef.current.muted = newMuted; // Directly set muted on video element
+                                }
+                                return newMuted;
+                            });
+                        }}
+                        className="mute-button"
+                    >
+                        <img
+                            src={muted ? 'http://localhost/uploads/component_images/no-sound.png' : 'http://localhost/uploads/component_images/volume.png'}
+                            alt={muted ? 'Unmute' : 'Mute'}
+                        />
+                    </button>
                     <video
                         ref={videoRef} // Attach the ref to the video element
                         src="http://localhost/uploads/Omniscient Reader (Official Trailer) _ WEBTOON.mp4"
                         autoPlay
-                        muted
+                        muted={muted}
                         loop
+                        volume = {volume}
                     />
+                    </>
                 )}
             </div>
 
@@ -140,6 +209,7 @@ function CarouselWrapper({ comics }) {
                             </div>
                             <div className="notice">*Hover over the image to watch the trailer</div>
                             </Link>
+                            
                         </div>
                     ))}
                 </div>

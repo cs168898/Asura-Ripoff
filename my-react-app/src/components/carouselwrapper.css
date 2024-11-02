@@ -103,6 +103,19 @@
     margin: 0;
 }
 
+.mute-button{
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.mute-button img{
+    width: 25px;
+    color: white;
+}
+
 
 
 .carousel-wrapper .title{
