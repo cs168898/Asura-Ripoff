@@ -700,6 +700,12 @@ body{
   text-align: center;
 }
 
+.profile-picture img {
+  max-width: 20vw;
+  max-height: 20vh;
+  width: auto;
+  height: auto;
+}
 .change-credentials-form{
   
     
