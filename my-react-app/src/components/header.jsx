@@ -138,7 +138,7 @@ function Header(){
                 
                 {loggedIn ? (
                     // add user profile picture from DB below 
-                <img src={profilePicUrl} alt="profile picture" />
+                <img src={profilePicUrl || 'http://localhost/uploads/profile-picture/person.png'  } alt="profile picture"  onError={(e) => {e.target.src = 'http://localhost/uploads/profile-picture/person.png'}}/>
             ) : (
                 <p>Login/Signup.</p>
             )}

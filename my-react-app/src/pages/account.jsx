@@ -193,9 +193,9 @@ function Account(){
             
                 <div className="profile-picture">
                     <img 
-                        src={profilePicUrl || 'person.png'} 
+                        src={profilePicUrl || 'http://localhost/uploads/profile-picture/person.png'} 
                         alt="profile-picture"
-                        onError={(e) => {e.target.src = '/person.jpg'}}
+                        onError={(e) => {e.target.src = 'http://localhost/uploads/profile-picture/person.png'}}
                      />
                      <form onSubmit={handleProfilePictureSubmit}>
                         <input type="file" accept="image/*" onChange={handleFileChange}/>                    
