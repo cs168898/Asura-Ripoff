@@ -16,6 +16,25 @@ function Account(){
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    // Check if user is premium
+    const [user, setUser] = useState({ is_premium: false }); // Placeholder for user data
+    const session = useUserSession(); // Assume useUserSession returns an object with login status
+    
+    useEffect(() => {
+        
+        if (session.loggedIn) {
+            axios.get(`http://localhost/comic_backend/is_premium.php`, { withCredentials: true })
+            .then(response => setUser({ is_premium: response.data.is_premium === 1 }))
+            
+            .catch(error => console.error("Error checking bookmark status:", error));
+            
+        } else {
+            setUser({ is_premium: false });
+        }
+    }, [session.loggedIn]);
+
+    // end of check if user is premium
+
     const [credentials, setCredentials] = useState({
         newUsername: '',
         newEmail: '',
@@ -127,7 +146,7 @@ function Account(){
                 </div>
                 <div className="subscription-status">
                     <div className="subscription-message">
-                        Your account is NOT premium
+                        {user.is_premium ? ( 'Your account is premium!') : ('Your account is NOT premium')}
                     </div>
                     <button onClick={openModal}>Subscribe</button>
                 </div>
