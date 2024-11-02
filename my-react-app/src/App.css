@@ -183,6 +183,7 @@ body{
     grid-template-columns: 3fr 1fr; /* fr stands for flexible fractions , where it will distribute available space in the grid*/
     gap: 20px;
     padding: 20px;
+    height: auto;
 }
 
 /***** carousel *****/
@@ -195,6 +196,7 @@ body{
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: auto;
+  
 }
 
 .carousel-wrapper .cover-picture{
@@ -233,8 +235,9 @@ body{
 .main-content{
   grid-column: 1; /* start at the first column*/
   grid-row: 2; /* end at the second row */ 
-  min-height: 50vh; /* Use min-height instead of height */
+  min-height: auto; /* Use min-height instead of height */
   border: 2px solid red;
+  background-color: var(--theme-secondary-background-color);
 }
 
 .main-content .latest-updates{
@@ -254,8 +257,7 @@ body{
 }
 
 .main-content-inner{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
   gap: 20px; /* Space between items */
   border: 1px solid white;
   grid-template-columns: 1fr 1fr;
@@ -265,10 +267,8 @@ body{
 }
 
 .items-grid {
-  
-  
   display: grid; /* Ensure it's a grid container */
-  gap: 20px;
+
   height: auto; /* Grow with content */
 }
 
@@ -278,6 +278,7 @@ body{
   gap: 10px;
   padding: 15px;
   text-align: center;
+  
 }
 
 .item img{
@@ -286,6 +287,7 @@ body{
 
 .item a{
   border: 1px solid #ccc;
+  
 }
 
 
@@ -314,14 +316,19 @@ body{
   max-width: 150px;
 }
 
+
+
+.item .title-wrapper{
+  display: -webkit-box;            /* Needed for multiline truncation */
+  -webkit-line-clamp: 2;           /* Number of lines to display */
+  -webkit-box-orient: vertical;    /* Specifies the box orientation */
+  overflow: hidden;                /* Hide overflowed text */
+  height: 11vh;
+}
+
 .item .title{
   font-size: 1em;
   font-weight: bold;
-  height: auto;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  
 }
 
 .item .latest-chapters{
@@ -337,16 +344,16 @@ body{
 .sidebar{
   grid-column: 2; /* Move sidebar to the second column */
   grid-row: 1 / span 2; /* Span from the first row down to cover two rows */
-  height: 100%;
-  border: 2px solid red;
+  height: auto;
   
+  background-color: var(--theme-secondary-background-color);
 }
 
 .sidebar .header{
   padding: 5px;
   font-size: 1em;
   text-align: center;
-  border: 1px solid white;
+  
   border-radius: 10px;
   background: white;
   color: grey;
@@ -364,12 +371,9 @@ body{
 .sidebar .button-wrapper{
   text-align: center;
   padding: 10px;
+  border: none;
 }
 
-.sidebar .items-grid{
-
-    gap: 20px;
-}
 
 .sidebar .item{
   display: flex;
@@ -378,7 +382,7 @@ body{
   align-items: center; /* Center-align items vertically */
   gap: 15px; /* Space between the cover picture and the text */
   padding: 10px;
-  border: 1px solid #ddd;
+  border-top: 1px solid #000000;
 }
 .sidebar .ranking{
   text-align: center;
@@ -397,6 +401,7 @@ body{
   margin-right: auto;
   text-decoration: none;
   color: white;
+  border: none;
 }
 
 .sidebar .cover-picture{
@@ -512,6 +517,7 @@ body{
 .comic-chapters{
   grid-template-columns: 1fr 2fr;
   min-height: 60vh;
+  height: auto;
   border: 2px red solid;
   margin: 20px;
   padding: 10px;
@@ -535,8 +541,29 @@ body{
 .comic-chapters .chapter-item{
   background: var(--theme-primary-color);
   margin: 10px;
-  padding: 5px;
   border-radius: 5px;
+  position: relative;
+  height: 6vh;
+}
+
+.chapter-item a{
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  text-decoration: none;
+  color: white;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 0;
+}
+
+.chapter-item.restricted{
+  background-color: grey;
+  height: inherit;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  
 }
 
 .comic-chapters .chapter-item p{
@@ -1119,5 +1146,6 @@ body{
 :root{
   --theme-primary-color: rgb(158, 68, 242);
   --theme-background-color: #242424;
+  --theme-secondary-background-color: rgb(49, 49, 49);
 }
 
