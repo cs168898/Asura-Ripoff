@@ -11,7 +11,7 @@ function useUserSession() {
                     setSession({ loggedIn: true, userId: response.data.user_id, username: response.data.username });
                     
                 } else {
-                    setSession({ loggedIn: false, userId: null, userId:null });
+                    setSession({ loggedIn: false, userId: null, username:null });
                 }
             })
             .catch(error => {
