@@ -1232,6 +1232,12 @@ html, body {
   right: 10px;
 }
 
+.merchant img {
+  width: auto;
+  max-width: 15vw;
+  height: auto;
+  max-height: 15vh;
+}
 
 /************************ Upload Comics Page *********************/
 .upload-comic-page-wrapper{

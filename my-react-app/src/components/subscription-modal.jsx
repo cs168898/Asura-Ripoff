@@ -8,8 +8,25 @@ function Subscription_Modal({ isOpen, onRequestClose }){
     // State to track the selected radio button's value
     const [selectedOption, setSelectedOption] = useState(null);
 
+    const merchantData = {
+        option1: { url: "https://www.paypal.com/sg/home", img: "http://localhost/uploads/merchants/paypal.png" },
+        option2: { url: "https://www.visa.com.sg/", img: "http://localhost/uploads/merchants/visa.png" },
+        option3: { url: "https://www.mastercard.com/global/en.html", img: "http://localhost/uploads/merchants/mastercard.png" },
+        option4: { url: "https://stripe.com/en-sg", img: "http://localhost/uploads/merchants/stripe.png" },
+        option5: { url: "https://www.shopify.com/sg", img: "http://localhost/uploads/merchants/shopify.png" },
+        option6: { url: "https://www.bankofamerica.com/", img: "http://localhost/uploads/merchants/bankofamerica.png" },
+    };
+
     const handleRadioChange = (event) => {
         setSelectedOption(event.target.value);
+    };
+
+    const handleGoClick = () => {
+        if (selectedOption && merchantData[selectedOption]) {
+            window.location.href = merchantData[selectedOption].url;
+        } else {
+            alert("Please select a merchant");
+        }
     };
 
     return(
@@ -21,99 +38,31 @@ function Subscription_Modal({ isOpen, onRequestClose }){
           }}
         >
 
-        <div className="merchant-wrapper">
-            <div className="header">
-                Choose a Merchant
-                <button onClick={onRequestClose}>X</button>
-            </div>
-            <div className="merchants">
-
-                <label>
-                <div className="merchant">
-                    <img src="/" alt="Merchant 1" />
-                    <input
-                    type="radio"
-                    name="options"
-                    value="option1"
-                    checked={selectedOption === 'option1'}
-                    onChange={handleRadioChange}
-                    />
+            <div className="merchant-wrapper">
+                <div className="header">
+                    Choose a Merchant
+                    <button onClick={onRequestClose}>X</button>
                 </div>
-                </label>
-                
-                <label>
-                <div className="merchant">
-                <img src="/" alt="Merchant 2" />
-                <input
-                    type="radio"
-                    name="options"
-                    value="option2"
-                    checked={selectedOption === 'option2'}
-                    onChange={handleRadioChange}
-                    />
+                <div className="merchants">
+                    {Object.keys(merchantData).map((option, index) => (
+                                            <label>
+                                                <div className="merchant">
+                                                    <img src={merchantData[option].img} alt={`Merchant ${index +1}`} />
+                                                    <input
+                                                    type="radio"
+                                                    name="options"
+                                                    value={option}
+                                                    checked={selectedOption === option}
+                                                    onChange={handleRadioChange}
+                                                    />
+                                                </div>
+                                            </label>                    
+                    ))}
                 </div>
-                </label>
-
-                <label>
-                <div className="merchant">
-                <img src="/" alt="Merchant 3" />
-                <input
-                    type="radio"
-                    name="options"
-                    value="option3"
-                    checked={selectedOption === 'option3'}
-                    onChange={handleRadioChange}
-                    />
-                </div>
-                </label>
-
-                <label>
-                <div className="merchant">
-                <img src="/" alt="Merchant 4" />
-                <input
-                    type="radio"
-                    name="options"
-                    value="option4"
-                    checked={selectedOption === 'option4'}
-                    onChange={handleRadioChange}
-                    />
-                </div>
-                </label>
-
-                <label>
-                <div className="merchant">
-                <img src="/" alt="Merchant 5" />
-                <input
-                    type="radio"
-                    name="options"
-                    value="option5"
-                    checked={selectedOption === 'option5'}
-                    onChange={handleRadioChange}
-                    />
-                </div>
-                </label>
-
-                <label>
-                <div className="merchant">
-                <img src="/" alt="Merchant 6" />
-                <input
-                    type="radio"
-                    name="options"
-                    value="option6"
-                    checked={selectedOption === 'option6'}
-                    onChange={handleRadioChange}
-                    />
-                </div>
-                </label>
-
                 <div className="button-wrapper">
-                <button>Go</button>
+                        <button onClick={handleGoClick}>Go</button>       
                 </div>
-                
-                
             </div>
-        </div>
-
         </Modal>
     );
 }
