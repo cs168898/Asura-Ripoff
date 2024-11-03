@@ -96,9 +96,6 @@ function Home() {
                                     <div className="item" key={index}>
                                         <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
                                         <div className="border-wrapper">
-                                            <div className="title-wrapper">
-                                                <h2 className='title'>{comic.title || "No title available"}</h2>
-                                            </div>
                                             
                                             {comic.cover_page_url ? (
                                                 <div className="cover-picture">
@@ -108,6 +105,9 @@ function Home() {
                                             ) : (
                                                 <p>No cover available</p>
                                             )}
+                                            <div className="title-wrapper">
+                                                <h2 className='title'>{comic.title || "No title available"}</h2>
+                                            </div>
                                             <div className="latest-chapters">
                                                         <p>{comic.chapters} chapters</p>
                                             </div>

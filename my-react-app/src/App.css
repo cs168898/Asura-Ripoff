@@ -311,6 +311,7 @@ html, body {
   height: 200px ;
   max-height: 200px;
   max-width: 150px;
+  margin-top: 10px;
 }
 
 
@@ -321,7 +322,7 @@ html, body {
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
   overflow: hidden;                /* Hide overflowed text */
-  height: 7vh;
+  height: auto;
 }
 
 .item .title{
@@ -396,6 +397,7 @@ html, body {
   height: 30px;
   border: 1px solid grey;
   font-weight: bold;
+  border-radius: 8px;
 }
 
 .sidebar .ranking p{
@@ -846,7 +848,6 @@ html, body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
 }
 
 .logout-button{

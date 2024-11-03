@@ -19,7 +19,30 @@ function Account(){
     // Check if user is premium
     const [user, setUser] = useState({ is_premium: false }); // Placeholder for user data
     const session = useUserSession(); // Assume useUserSession returns an object with login status
+
+    const [admin , setIs_admin] =useState({is_admin: false});
     
+    useEffect(() => {
+        if (session.loggedIn) {
+            axios.get('http://localhost/comic_backend/is_admin.php', { withCredentials: true })
+                .then(response => {
+                    console.log("Admin Check Response:", response.data); // Log full response for debugging
+                    if (response.data.success) {
+                        setIs_admin(prevState => ({ ...prevState, is_admin: response.data.is_admin }));
+                    } else {
+                        console.error("Error:", response.data.message);
+                    }
+                })
+                .catch(error => console.error("Error checking admin status", error));
+        }
+    }, [session.loggedIn]);
+
+    useEffect(() => {
+        console.log("Updated admin.is_admin:", admin.is_admin); // Log the updated admin state
+    }, [admin]);
+    
+
+
     useEffect(() => {
         
         if (session.loggedIn) {
@@ -227,6 +250,11 @@ function Account(){
                     </div>
                     
                     <button onClick={(user.is_premium ? (null) : (openModal))}>{(user.is_premium ? ( 'Subscribed') : ('Subscribe'))}</button>
+                    {console.log(`admin.is_admin = ${admin.is_admin}`)}
+                    {admin.is_admin && <a href="/admin"><button className="admin-button">Admin Panel</button></a>}
+
+                        
+                    
                 </div>
                 <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
                     
