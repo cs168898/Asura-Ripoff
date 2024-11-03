@@ -43,9 +43,10 @@ function Admin() {
     return (
         <>
             <Header />
-            <div className="admin-wrapper">
+                <div className="admin-panel-wrapper">
                 <h2>Admin Panel - Update Comic and Add to Featured</h2>
-                <form onSubmit={handleSubmit}>
+                <div className="admin-wrapper">
+                <form className='update-comics' onSubmit={handleSubmit}>
                     <label><b> Add to featured , Comic ID:</b></label>
                     <input
                         type="number"
@@ -55,7 +56,7 @@ function Admin() {
                         required
                     />
 
-                    <label><b>Title:</b></label>
+                    <label><b>Update Title:</b></label>
                     <input
                         type="text"
                         name="title"
@@ -131,6 +132,8 @@ function Admin() {
 
                 {/* Display a success/error message */}
                 {message && <p>{message}</p>}
+                </div>
+                
             </div>
             <Footer />
         </>
