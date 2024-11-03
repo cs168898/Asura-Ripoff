@@ -9,12 +9,12 @@ function Subscription_Modal({ isOpen, onRequestClose }){
     const [selectedOption, setSelectedOption] = useState(null);
 
     const merchantData = {
-        option1: { url: "https://www.paypal.com/sg/home", img: "http://localhost/uploads/merchants/paypal.png" },
-        option2: { url: "https://www.visa.com.sg/", img: "http://localhost/uploads/merchants/visa.png" },
-        option3: { url: "https://www.mastercard.com/global/en.html", img: "http://localhost/uploads/merchants/mastercard.png" },
-        option4: { url: "https://stripe.com/en-sg", img: "http://localhost/uploads/merchants/stripe.png" },
-        option5: { url: "https://www.shopify.com/sg", img: "http://localhost/uploads/merchants/shopify.png" },
-        option6: { url: "https://www.bankofamerica.com/", img: "http://localhost/uploads/merchants/bankofamerica.png" },
+        option1: { url: "", img: "http://localhost/uploads/merchants/paypal.png" },
+        option2: { url: "", img: "http://localhost/uploads/merchants/visa.png" },
+        option3: { url: "", img: "http://localhost/uploads/merchants/mastercard.png" },
+        option4: { url: "", img: "http://localhost/uploads/merchants/stripe.png" },
+        option5: { url: "", img: "http://localhost/uploads/merchants/shopify.png" },
+        option6: { url: "", img: "http://localhost/uploads/merchants/bankofamerica.png" },
     };
 
     const handleRadioChange = (event) => {

@@ -14,9 +14,54 @@ function SignUp() {
     });
     const [message, setMessage] = useState('');
 
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [confirmPasswordError, setConfirmPasswordError] = useState('');
+
+    // Validation functions
+    const validateUsername = (username) => {
+        if (username.length < 4) {
+            setUsernameError("Username must be at least 4 characters long.");
+        } else {
+            setUsernameError('');
+        }
+    };
+
+    const validatePassword = (password) => {
+        if (password.length < 8) {
+            setPasswordError("Password must be at least 8 characters long.");
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/;
+        if (!emailRegex.test(email)) {
+            setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
+        } else {
+            setEmailError('');
+        }
+    };
+
+    const validateConfirmPassword =  (password, confirmPassword) => {
+
+        if (password != confirmPassword){
+            setConfirmPasswordError("Your passwords do not match.");
+        } else {
+            setConfirmPasswordError('')
+        }
+    }
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+
+        if (name === 'username') validateUsername(value);
+        if (name === 'password') validatePassword(value);
+        if (name === 'email') validateEmail(value);
+        if (name === 'confirmPassword') validateConfirmPassword(formData.password, value)
     };
 
     const handleSubmit = async (e) => {
@@ -24,23 +69,20 @@ function SignUp() {
 
         // Validation checks
         if (formData.username.length < 4) {
-            setMessage("Username must be at least 4 characters long.");
             return;
         }
 
-        const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/; // Matches email extensions between 2 to 4 characters
+        // Matches email extensions between 2 to 4 characters
+        const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/; 
         if (!emailPattern.test(formData.email)) {
-            setMessage("Please enter a valid email with a 2-4 character extension (e.g., .com, .net).");
             return;
         }
 
         if (formData.password.length < 8) {
-            setMessage("Password must be at least 8 characters long.");
             return;
         }
 
         if (formData.password !== formData.confirmPassword) {
-            setMessage("Passwords do not match.");
             return;
         }
 
@@ -75,6 +117,7 @@ function SignUp() {
                         placeholder="Enter your username here"
                         required
                     />
+                    {usernameError && <p className="error-message">{usernameError}</p>}
                     
                     <b>Email: </b>
                     <input
@@ -86,6 +129,7 @@ function SignUp() {
                         placeholder="Enter your email here"
                         required
                     />
+                    {emailError && <p className="error-message">{emailError}</p>}
                     
                     <b>Password: </b>
                     <input 
@@ -97,6 +141,7 @@ function SignUp() {
                         placeholder="Enter your password here"
                         required
                     />
+                    {passwordError && <p className="error-message">{passwordError}</p>}
                     
                     <b>Confirm Password: </b>
                     <input 
@@ -108,12 +153,8 @@ function SignUp() {
                         placeholder="Confirm your password here"
                         required
                     />
-                    
-                        {/* Display the validation message */}
-                        {message && <p className="error-message" style={{color:'red', fontWeight:'bold', textAlign: 'center', fontSize:'medium'}}>{message}</p>}
-                    
-                    
-                    
+                    {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
+
                     <button type="submit" className="signup-button">Sign Up now</button>
                 </form>
 

@@ -61,8 +61,8 @@ function Comics() {
                             {filteredComics.map((comic, index) => (
                                 <Link to={`/specific-comic/${comic.comic_id}`} key={index} className="item">
                                 <div key={comic.id} className="comic-card">   
-                                    <div className="comic-title">{comic.title}</div>
                                     <img src={`http://localhost/${comic.cover_page_url}`} alt={`${comic.title} Cover`} className="comic-cover" />
+                                    <div className="comic-title">{comic.title}</div>
                                 </div> 
                                 </Link>
                             )

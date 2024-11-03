@@ -21,6 +21,11 @@ function Account(){
     const session = useUserSession(); // Assume useUserSession returns an object with login status
 
     const [admin , setIs_admin] =useState({is_admin: false});
+
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [emailError, setEmailError] = useState('');
+
     
     useEffect(() => {
         if (session.loggedIn) {
@@ -69,12 +74,43 @@ function Account(){
         newPassword:''
     });
 
+    
+    // Validation functions
+    const validateUsername = (username) => {
+        if (username.length < 4) {
+            setUsernameError("Username must be at least 4 characters long.");
+        } else {
+            setUsernameError('');
+        }
+    };
+
+    const validatePassword = (password) => {
+        if (password.length < 8) {
+            setPasswordError("Password must be at least 8 characters long.");
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/;
+        if (!emailRegex.test(email)) {
+            setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
+        } else {
+            setEmailError('');
+        }
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCredentials({
             ...credentials,
             [name]: value
         });
+
+        if (name === 'newUsername') validateUsername(value);
+        if (name === 'newPassword') validatePassword(value);
+        if (name === 'newEmail') validateEmail(value);
     };
 
     useEffect(() => {
@@ -127,6 +163,16 @@ function Account(){
 
     const handleUsernameSubmit = async (e) => {
         e.preventDefault();
+        if (!validateUsername(credentials.newUsername)) {
+
+            setUsernameError("Username must be at least 4 characters long.");
+
+            return;
+        }
+        
+        // this is to clear the error state if the validation passes
+        setUsernameError(''); 
+
         try {
             const response = await axios.post(
                 'http://localhost/comic_backend/change_username.php',
@@ -146,6 +192,14 @@ function Account(){
 
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validatePassword(credentials.newPassword)) {
+            setPasswordError("Password must be at least 8 characters long.");
+            return;
+        }
+
+        setPasswordError('')
+
         try {
             const response = await axios.post(
                 'http://localhost/comic_backend/change_password.php',
@@ -165,6 +219,14 @@ function Account(){
 
     const handleEmailSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateEmail(credentials.newEmail)) {
+            setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
+            return;
+        }
+
+        setEmailError('');
+
         try {
             const response = await axios.post(
                 'http://localhost/comic_backend/change_email.php',
@@ -270,6 +332,7 @@ function Account(){
                             placeholder="Enter new username"
                          />
                         <button type="submit">Change</button>
+                        {usernameError && <p className="error-message">{usernameError}</p>}
                     </form>
                     <form onSubmit={handlePasswordSubmit}>
                         <label htmlFor="newPassword">Change Password: </label>
@@ -281,17 +344,20 @@ function Account(){
                             placeholder="Enter new password"
                         />
                         <button type="submit">Change</button>
+                        {passwordError && <p className="error-message">{passwordError}</p>}
                     </form>
                     <form onSubmit={handleEmailSubmit}>
                         <label htmlFor="newEmail">Change Email: </label>
                         <input 
-                            type="email" 
+                            type="text" 
                             name="newEmail"
                             value={credentials.newEmail}
                             onChange={handleInputChange}
                             placeholder="Enter new email"
                         />
+                        
                         <button type="submit">Change</button>
+                        {emailError && <p className="error-message">{emailError}</p>}
                     </form>
                 </div>
 

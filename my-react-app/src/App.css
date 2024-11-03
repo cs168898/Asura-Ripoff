@@ -15,6 +15,12 @@ html, body {
   margin: 0;
 }
 
+/* Global button attribute */
+button:not(.active):hover {
+  color: black ; /* Text color on hover */
+  cursor: pointer;
+}
+
 
 /********** Header ***********/
 
@@ -297,6 +303,11 @@ html, body {
   background-color: var(--theme-primary-color);
 }
 
+.border-wrapper:hover  img {
+  transform: translateY(-10px); /* Move elementB up */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
 .item .cover-picture{
   display: flex;
   align-items: center;
@@ -312,7 +323,9 @@ html, body {
   max-height: 200px;
   max-width: 150px;
   margin-top: 10px;
+  
 }
+
 
 
 
@@ -322,7 +335,7 @@ html, body {
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
   overflow: hidden;                /* Hide overflowed text */
-  height: 80px;
+  height: 60px;
 }
 
 .item .title{
@@ -737,6 +750,8 @@ html, body {
 
 }
 
+/*********************** Upload Comics Page ******************/
+
 .upload-comics-wrapper{
   text-align: center;
   font-weight: bold;
@@ -828,7 +843,7 @@ html, body {
   align-items: center;
   gap: 10px;
   margin: 20px;
-  
+  height: auto;
 }
 
 .change-credentials-form label {
@@ -849,8 +864,17 @@ html, body {
   color: white;
   padding: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
+}
+
+.change-credentials-form .error-message{
+  width: 100%;
+  grid-column: 1/ span 3;
+  text-align: center;
+  font-size: small;
+  color: red;
+  margin: 0;
 }
 
 .logout-button{
@@ -870,14 +894,14 @@ html, body {
 /********* Login *************/
 .login-wrapper{
   padding: 50px;
-  border: 1px solid var(--theme-primary-color);
-  background-color: #666;
+  background-color: var(--theme-secondary-background-color);
   text-align: center;
   height: 55vh;
   margin: 30px 350px;
   font-size: 20px;
   align-items: center;
   width: auto;
+  border-radius: 8px;
   }
 
 .login-wrapper input {
@@ -887,6 +911,8 @@ html, body {
   font-size: 20px;
   justify-content: center;
   align-items: center;
+  border-radius: 3px;
+  border: 1px solid white;
 }
 
 .login-wrapper form label{
@@ -907,11 +933,12 @@ html, body {
   width: 40%;
   padding: 10px;
   background-color: var(--theme-primary-color);
-  border-radius: 5px;
-  color: black;
+  border-radius: 8px;
+  color: white;
   font-size: 20px;
   align-items: center;
   margin: 10px 10px 20px;
+  border: none;
 }
 
 /********** Responsive design (Login) **********/
@@ -958,11 +985,12 @@ html, body {
   width: 75%;
   max-width: 400vw;
   height: auto;
-  background-color: #666;
+  background-color: var(--theme-secondary-background-color);
   padding: 20px;
   margin: 80px auto;
   font-size: 20px;
   text-align: center;
+  border-radius: 8px;
 }
 
 .signup-wrapper form {
@@ -983,11 +1011,13 @@ html, body {
 .signup-wrapper input {
   width: 40%;
   padding: 10px;
-  margin: 10px;
+  margin: 20px;
   font-size: 20px;
   text-align: left;
   align-items: start;
   grid-column: 2;
+  border-radius: 3px;
+  border: 1px solid white;
 }
 
 .signup-wrapper button{
@@ -999,20 +1029,21 @@ html, body {
   width: 30%;
   padding: 10px;
   background-color: var(--theme-primary-color);
-  border-radius: 5px;
-  color: black;
+  border-radius: 8px;
+  color: white;
   font-size: 20px;
   align-items: center;
   margin: 10px 10px 20px;
-  text-align: center;
+  border: none;
 }
 
-.signup-wrapper form p{
-  grid-column: 1/ span 2;
-  background-color: var(--theme-secondary-background-color);
-  justify-self: center;
-  padding: 10px;
-  border-radius: 3px;
+.signup-wrapper .error-message{
+  color: red;
+  font-size: medium;
+  grid-column: 2;
+  text-align: start;
+  margin: 0;
+  margin-left: 20px;
 }
 
 /**********Comic*************/
@@ -1107,7 +1138,8 @@ html, body {
   font-size: 1rem;
   margin-bottom: 10px;
   text-align: center;
-  height: 6vh;
+  height: auto;
+  margin-top: 10px;
   
   -webkit-line-clamp: 2;           /* Number of lines to display */
   -webkit-box-orient: vertical;    /* Specifies the box orientation */
@@ -1118,6 +1150,11 @@ html, body {
   width: 100%;
   height: 200px;
   border-radius: 4px;
+}
+
+.comic-card:hover img{
+  transform: translateY(-20px); 
+  transition: transform 0.3s ease; 
 }
 
 .no-bookmark-wrapper{
@@ -1247,7 +1284,6 @@ html, body {
 /************************ Upload Comics Page *********************/
 .upload-comic-page-wrapper{
   padding: 50px;
-  border: 1px solid var(--theme-primary-color);
   background-color: var(--theme-background-color);
   text-align: center;
   height: auto;
@@ -1255,6 +1291,8 @@ html, body {
   font-size: 20px;
   align-items: center;
   width: auto;
+  border-radius: 8px;
+  
 }
 
 .upload-comic-page-wrapper form{
@@ -1277,18 +1315,24 @@ html, body {
   padding: 10px;
   margin: 40px 10px 15px;
   font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid white;
   
 }
 
 .upload-comic-page-wrapper input[type=file]{
   cursor: pointer;
   margin: 0;
+  border-radius: 8px;
+  border: none;
 }
 
 .upload-comic-page-wrapper textarea{
   width: 20vw;
   height: 20vh;
   margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid white;
   
 }
 
@@ -1299,15 +1343,16 @@ html, body {
   height: 50px;
   background-color: var(--theme-primary-color);
   border: transparent;
-  box-shadow: 1px 1px 1px 1px black;
+
   cursor: pointer;
+  border-radius: 8px;
 }
 
 /********** Admin Page *********/
 
 .admin-panel-wrapper{
   text-align: center;
-  height: 81.5vh;
+  height: auto;
 }
 
 .admin-wrapper{
@@ -1341,11 +1386,13 @@ html, body {
 .admin-wrapper button{
   grid-column: 1 / span 2;
   width: 100px;
-  justify-self: center;
+  margin-bottom: 20px;
+  margin-left: auto;
 }
 
 .admin-wrapper input{
-  height: 5vh;
+  height: 4vh;
+  text-align: left;
 }
 
  
@@ -1407,7 +1454,3 @@ html, body {
   --asura-description-text-color: rgb(162 162 162 );
 }
 
-button:not(.active):hover {
-  color: black ; /* Text color on hover */
-  cursor: pointer;
-}
