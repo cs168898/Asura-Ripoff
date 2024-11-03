@@ -962,7 +962,7 @@ button:not(.active):hover {
   .login-wrapper input {
     padding: 8px;
     font-size: 15px;
-    width: 100%;
+    width: 90%;
     margin: 0;
     padding: 8px;
     align-items: center;
