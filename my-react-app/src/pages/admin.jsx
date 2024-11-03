@@ -28,7 +28,7 @@ function Admin() {
 
         try {
             const response = await axios.post(
-                'http://localhost/comic_backend/update_comic_and_feature.php',
+                'http://localhost/comic_backend/admin_update_comics.php',
                 JSON.stringify(comicData),
                 { headers: { 'Content-Type': 'application/json' } }
             );
