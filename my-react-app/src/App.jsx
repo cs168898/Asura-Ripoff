@@ -13,6 +13,7 @@ import Specific_Chapter from './pages/specific-chapter';
 import Comics from './pages/comics';
 import Bookmarks from './pages/bookmarks';
 import ComicUploadForm from './pages/upload-comic';
+import Admin from './pages/admin';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/comics" element={<Comics />}/>
         <Route path="/bookmarks" element={<Bookmarks />}/>
         <Route path="/upload-comic" element={<ComicUploadForm />}/>
+        <Route path="/admin" element={<Admin />}/>
       </Routes>
     </Router>
   )
