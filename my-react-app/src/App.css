@@ -893,19 +893,18 @@ button:not(.active):hover {
 
 /********* Login *************/
 .login-wrapper{
-  padding: 50px;
+  width: 70%;
+  max-width: 400vw;;
   background-color: var(--theme-secondary-background-color);
-  text-align: center;
-  height: 55vh;
-  margin: 30px 350px;
+  padding: 20px;
+  margin: 80px auto;
   font-size: 20px;
-  align-items: center;
-  width: auto;
+  text-align: center;
   border-radius: 8px;
   }
 
 .login-wrapper input {
-  width: 55%;
+  width: 35%;
   padding: 10px;
   margin: 40px 10px 15px;
   font-size: 20px;
@@ -930,7 +929,7 @@ button:not(.active):hover {
 }
 
 .login-button, .direct-to-signup {
-  width: 40%;
+  width: 30%;
   padding: 10px;
   background-color: var(--theme-primary-color);
   border-radius: 8px;
@@ -982,7 +981,7 @@ button:not(.active):hover {
 
 /******************Sign Up*********************/
 .signup-wrapper{
-  width: 75%;
+  width: 70%;
   max-width: 400vw;
   height: auto;
   background-color: var(--theme-secondary-background-color);
