@@ -890,6 +890,15 @@ html, body {
   display: inline;
 }
 
+.login-wrapper form p{
+  grid-column: 1/ span 2;
+  background-color: var(--theme-secondary-background-color);
+  justify-self: center;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: medium;
+}
+
 .login-button, .direct-to-signup {
   width: 40%;
   padding: 10px;
@@ -992,6 +1001,14 @@ html, body {
   align-items: center;
   margin: 10px 10px 20px;
   text-align: center;
+}
+
+.signup-wrapper form p{
+  grid-column: 1/ span 2;
+  background-color: var(--theme-secondary-background-color);
+  justify-self: center;
+  padding: 10px;
+  border-radius: 3px;
 }
 
 /**********Comic*************/

@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import SignUp from './signup'
-import Home from './Home'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 axios.defaults.withCredentials = true;
 
-function Login(){
-    const navigate = useNavigate()
+function Login() {
+    const navigate = useNavigate();
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [message, setMessage] = useState('');
+    const [error, setError] = useState(''); // State to store error messages
 
     useEffect(() => {
         const checkSession = async () => {
@@ -30,7 +29,8 @@ function Login(){
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setCredentials({...credentials, [name]: value});
+        setCredentials({ ...credentials, [name]: value });
+        setError(''); // Clear error message when user starts typing
     };
 
     const handleSubmit = async (e) => {
@@ -39,53 +39,59 @@ function Login(){
             const response = await axios.post(
                 'http://localhost/comic_backend/login_user.php',
                 JSON.stringify(credentials),
-                { headers: { 'Content-Type': 'application/json'}}
+                { headers: { 'Content-Type': 'application/json' } }
             );
 
-            setMessage(response.data.message);
             if (response.data.success) {
-                console.log(response, response.data);
+                setMessage(response.data.message);
                 navigate('/');
+            } else {
+                setError(response.data.message || "Invalid username or password"); // Set error message
             }
         } catch (error) {
             console.error("Login error:", error);
-            setMessage("An error occured. Please try again");
+            setError("An error occurred. Please try again.");
         }
     };
 
-    return(
+    return (
         <>
-        <Header/>
-        <div className='login-wrapper'>
-            <form onSubmit={handleSubmit}>
-                <label><b>Username:</b> </label>
-                <input 
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                    placeholder="Enter your username here"
-                    required
-                 /> <br />
-                <label><b>Password: </b></label>
-                <input 
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    placeholder="Enter your password here"
-                    required
-                /> <br /><br />
-                <button type="submit" className="login-button">Login</button>
-            </form>
-            <p>OR</p>
-            <button onClick={() => navigate('/SignUp')} className="direct-to-signup">Click here to Sign Up</button>
-        </div>
-        <Footer/>
+            <Header />
+            <div className='login-wrapper'>
+                <form onSubmit={handleSubmit}>
+                    <label><b>Username:</b> </label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={credentials.username}
+                        onChange={handleChange}
+                        placeholder="Enter your username here"
+                        required
+                    /> <br />
+                    <label><b>Password: </b></label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={credentials.password}
+                        onChange={handleChange}
+                        placeholder="Enter your password here"
+                        required
+                    /> <br /><br />
+                    {/* Display error message if there’s an error */}
+                {error && <p className='error-message' style={{ color: 'red', fontWeight: 'bold'}}> {error}</p>} 
+                    <button type="submit" className="login-button">Login</button>
+                </form>
+
+                
+
+                <p>OR</p>
+                <button onClick={() => navigate('/SignUp')} className="direct-to-signup">Click here to Sign Up</button>
+            </div>
+            <Footer />
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;
