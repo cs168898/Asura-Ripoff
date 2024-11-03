@@ -28,7 +28,7 @@ function SignUp() {
             return;
         }
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/; // Matches email extensions between 2 to 4 characters
+        const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/; // Matches email extensions between 2 to 4 characters
         if (!emailPattern.test(formData.email)) {
             setMessage("Please enter a valid email with a 2-4 character extension (e.g., .com, .net).");
             return;
