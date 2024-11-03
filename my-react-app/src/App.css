@@ -1307,6 +1307,7 @@ html, body {
 
 .admin-panel-wrapper{
   text-align: center;
+  height: 81.5vh;
 }
 
 .admin-wrapper{
@@ -1317,10 +1318,35 @@ html, body {
 
 .update-comics{
   grid-column: 1;
+  grid-row: 2;
+}
+
+.update-specific-comics{
+  grid-column: 1;
   grid-row: 1;
 }
 
+.admin-wrapper form{
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  justify-content: center;
+}
 
+.admin-wrapper label{
+  text-align: right;
+}
+
+.admin-wrapper button{
+  grid-column: 1 / span 2;
+  width: 100px;
+  justify-self: center;
+}
+
+.admin-wrapper input{
+  height: 5vh;
+}
 
  
 /********** Footer ***********/

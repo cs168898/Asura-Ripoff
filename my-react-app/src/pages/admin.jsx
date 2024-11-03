@@ -44,10 +44,12 @@ function Admin() {
         <>
             <Header />
                 <div className="admin-panel-wrapper">
-                <h2>Admin Panel - Update Comic and Add to Featured</h2>
+                <h2>Admin Panel</h2>
                 <div className="admin-wrapper">
+                <h2 className='update-specific-comic'>Update Specific Comic</h2>
                 <form className='update-comics' onSubmit={handleSubmit}>
-                    <label><b> Add to featured , Comic ID:</b></label>
+                
+                    <label><b>  Comic ID:</b></label>
                     <input
                         type="number"
                         name="comic_id"
