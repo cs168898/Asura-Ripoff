@@ -12,6 +12,7 @@ function Specific_Chapter() {
     const [comicImages, setComicImages] = useState([]); // Use a more descriptive state name
     const [loading, setLoading] = useState(true); // State to track loading status
     const navigate = useNavigate();
+    const [chapterNumber, setChapterNumber] = useState(null);
     const [prevChapterId, setPrevChapterId] = useState(null);
     const [nextChapterId, setNextChapterId] = useState(null);
 
@@ -20,9 +21,10 @@ function Specific_Chapter() {
             // Make the API request only if both comicId and chapterId are available
             axios.get(`http://localhost/comic_backend/get_chapter_images.php?comic_id=${comicId}&chapter_id=${chapterId}`)
                 .then(response => {
-                    const { data, prev_chapter_id, next_chapter_id } = response.data;
+                    const { data, chapter_number, prev_chapter_id, next_chapter_id } = response.data;
 
                     setComicImages(data || []);
+                    setChapterNumber(chapter_number);
                     setPrevChapterId(prev_chapter_id);
                     setNextChapterId(next_chapter_id);
                     setLoading(false); // Set loading to false after data is loaded
@@ -65,7 +67,7 @@ function Specific_Chapter() {
 
             <div className="specific-chapter-wrapper">
                 <div className="header">
-                    <span className='chapter-number'>Chapter {chapterId}</span>
+                    <span className='chapter-number'>Chapter {chapterNumber}</span>
                     <span className='chapter-title'>Chapter Title</span>
                     <div className='prev-next'>
                         <button onClick={handlePrev} disabled={!prevChapterId}>Prev</button>
