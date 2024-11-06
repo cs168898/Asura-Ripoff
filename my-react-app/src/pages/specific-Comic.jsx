@@ -185,9 +185,10 @@ function Specific_Comic(){
                                 <div key={comic.id} className={`chapter-item ${restricted ? 'restricted' : ''}`}>
                                     {restricted ? (
                                             
-                                            <a href="/" onClick={(openModal)}>
-                                            <span className="restricted-text">Chapter {index + 1} - Subscribe to access</span>
-                                            </a>
+                                            
+                                            <span className="restricted-text" onClick={openModal}>Chapter {index + 1} - Subscribe to access</span>
+                                            
+                                            
                                             
                                     ) : (
                                         <Link to={`/specific-comic/${comic.comic_id}/specific-chapter/${comic.chapter_id}`}>
@@ -195,9 +196,12 @@ function Specific_Comic(){
                                         </Link>
                                     )}
                                 </div>
+                                
                             );
                         })}
+                    <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
                     
+                    </Subscription_Modal>
                 </div>
             </div>
         </div>
