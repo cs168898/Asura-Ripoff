@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // To access the comic ID from the URL
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Subscription_Modal from '../components/subscription-modal';
 
 import Header from '../components/header'
 import Footer from '../components/footer';
@@ -13,6 +13,11 @@ function Specific_Comic(){
     const [comic, setComic] = useState(null);
     const [loading, setLoading] = useState(true); // State to track loading status
     const [user, setUser] = useState({ is_premium: false }); // Placeholder for user data
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     const session = useUserSession(); // Assume useUserSession returns an object with login status
     
@@ -179,7 +184,11 @@ function Specific_Comic(){
                             return (
                                 <div key={comic.id} className={`chapter-item ${restricted ? 'restricted' : ''}`}>
                                     {restricted ? (
+                                            
+                                            <a href="/" onClick={(openModal)}>
                                             <span className="restricted-text">Chapter {index + 1} - Subscribe to access</span>
+                                            </a>
+                                            
                                     ) : (
                                         <Link to={`/specific-comic/${comic.comic_id}/specific-chapter/${comic.chapter_id}`}>
                                             Chapter {index + 1}

@@ -68,7 +68,6 @@ function Specific_Chapter() {
             <div className="specific-chapter-wrapper">
                 <div className="header">
                     <span className='chapter-number'>Chapter {chapterNumber}</span>
-                    <span className='chapter-title'>Chapter Title</span>
                     <div className='prev-next'>
                         <button onClick={handlePrev} disabled={!prevChapterId}>Prev</button>
                         <button onClick={handleNext} disabled={!nextChapterId}>Next</button>
