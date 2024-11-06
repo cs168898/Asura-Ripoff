@@ -45,8 +45,8 @@ function Subscription_Modal({ isOpen, onRequestClose }){
                 </div>
                 <div className="merchants">
                     {Object.keys(merchantData).map((option, index) => (
-                                            <label>
-                                                <div className="merchant">
+                                            <label key={index}>
+                                                <div className="merchant" key={index}> 
                                                     <img src={merchantData[option].img} alt={`Merchant ${index +1}`} />
                                                     <input
                                                     type="radio"
