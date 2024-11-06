@@ -308,6 +308,11 @@ button:not(.active):hover {
   transition: transform 0.3s ease; /* Smooth transition */
 }
 
+.border-wrapper img{
+  transform: translateY(0px);
+  transition: transform 0.8s ease;
+}
+
 .item .cover-picture{
   display: flex;
   align-items: center;
@@ -1155,6 +1160,15 @@ button:not(.active):hover {
   transform: translateY(-20px); 
   transition: transform 0.3s ease; 
 }
+
+
+.comic-card img{
+  transform: translateY(0); 
+  transition: transform 0.8s ease; 
+}
+
+
+
 
 .no-bookmark-wrapper{
   position: absolute;
