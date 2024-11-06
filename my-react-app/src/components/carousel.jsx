@@ -24,7 +24,7 @@ function CarouselWrapper({ comics }) {
             setCurrentIndex((prevIndex) =>
                 prevIndex === comics.length - 1 ? 0 : prevIndex + 1
             );
-        }, 5000); // Adjust slide interval as needed
+        }, 5000); // 5000 stands for 5 seconds
     };
 
     // Function to stop the auto-slide
@@ -60,7 +60,7 @@ function CarouselWrapper({ comics }) {
 
     const handleDotClick = (index) => {
         setCurrentIndex(index);
-        stopAutoSlide(); // Optionally stop auto-slide when clicking a dot
+        stopAutoSlide(); //  stop auto-slide when clicking a dot
         startAutoSlide(); // Restart the auto-slide after clicking
     };
 

@@ -9,7 +9,7 @@ function Specific_Chapter() {
     const { comicId, chapterId } = useParams();
     console.log("Comic ID:", comicId, "Chapter ID:", chapterId);
 
-    const [comicImages, setComicImages] = useState([]); // Use a more descriptive state name
+    const [comicImages, setComicImages] = useState([]); 
     const [loading, setLoading] = useState(true); // State to track loading status
     const navigate = useNavigate();
     const [chapterNumber, setChapterNumber] = useState(null);
@@ -38,7 +38,7 @@ function Specific_Chapter() {
         }
     }, [comicId, chapterId]);
 
-    // If still loading, display a spinner or loading message
+    // If still loading, display loading message
     if (loading) {
         return <p>Loading...</p>;
     }

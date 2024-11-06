@@ -109,7 +109,7 @@ function Specific_Comic(){
         }
     }, [comicId]);
 
-    // If still loading, display a spinner or loading message
+    // If still loading, display loading message
     if (loading) {
         return <p>Loading...</p>;
     }
