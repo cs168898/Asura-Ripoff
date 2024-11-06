@@ -181,16 +181,25 @@ function Admin() {
 
                             <button type="submit" className="admin-submit-button">Submit</button>
                         </form>
+                        <div className="premium-admin-header">
+                            <h2>Set premium or admin for users</h2>
+                        </div>
                     <div className="premium-admin-container">
-                        <h2>Set premium or admin for users</h2>
+                        
 
-                        <label>Set premium for user ID: </label>
-                        <input type="text" name='user_id' value={userId} onChange={handlePremiumChange} />
-                        <button onClick={handleSetPremium}>Set Premium</button>
+                        <div className="premium">
+                            <label>Set premium for user ID: </label>
+                            <input  className='premium-input' type="number" name='user_id' value={userId} onChange={handlePremiumChange} />
+                            <button className='premium-button' onClick={handleSetPremium}>Set Premium</button>
 
-                        <label>Set Admin for user ID: </label>
-                        <input type="text" name='user_id_admin' value={userIdAdmin} onChange={handleAdminChange}/>
-                        <button onClick={handleSetAdmin}>Submit</button>
+                        </div>
+                        
+                        <div className="admin">
+                            <label>Set Admin for user ID: </label>
+                            <input className='admin-input' type="number" name='user_id_admin' value={userIdAdmin} onChange={handleAdminChange}/>
+                            <button className='admin-button' onClick={handleSetAdmin}>Set Admin</button>
+                        </div>
+                        
                     </div>
                 
                     </div>

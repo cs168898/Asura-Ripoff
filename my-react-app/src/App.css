@@ -1368,6 +1368,11 @@ button:not(.active):hover {
   height: auto;
 }
 
+.admin-panel-wrapper p{
+  font-weight: bold;
+  color: var(--theme-primary-color);
+}
+
 .admin-wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1379,10 +1384,19 @@ button:not(.active):hover {
   grid-row: 2;
 }
 
+.update-comics input{
+  width: 400px;
+}
+
+.update-comics textarea{
+  width: 400px;
+  height: 100px;
+}
+
 .admin-wrapper h2{
   grid-column: 1;
   grid-row: 1;
- margin-left: 250px;
+ 
   
 }
 
@@ -1397,6 +1411,12 @@ button:not(.active):hover {
   grid-template-rows: 1fr 1fr;
   gap: 10px;
   justify-content: center;
+  text-align: center;
+  background-color: var(--theme-secondary-background-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px;
+  width: 0.5fr;
 }
 
 .admin-wrapper label{
@@ -1415,7 +1435,29 @@ button:not(.active):hover {
   text-align: left;
 }
 
- 
+.premium-admin-header h2{
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+}
+
+.premium-admin-header{
+  text-align: center;
+}
+
+.premium-admin-container{
+  display: flex;
+  background-color: var(--theme-secondary-background-color);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 20px;
+}
+
+.premium-admin-container button{
+  margin-top: 20px;
+}
+
+
 /********** Footer ***********/
 .footer-wrapper{
   width: 100%;
