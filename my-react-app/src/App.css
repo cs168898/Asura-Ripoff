@@ -1271,6 +1271,11 @@ button:not(.active):hover {
   .comic-title {
     font-size: 12px;
   }
+  .comic-cover {
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+  }
   .bookmark-page-wrapper .container{
     height: 200vh;
   }
