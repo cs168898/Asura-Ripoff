@@ -503,8 +503,13 @@ button:not(.active):hover {
 
 .sidebar .synopsis{
   overflow-y: auto;
+
   height: 200px;
   padding-right: 10px;
+}
+
+.synopsis::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar .synopsis::-webkit-scrollbar{
