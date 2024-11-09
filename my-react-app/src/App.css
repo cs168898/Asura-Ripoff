@@ -740,7 +740,7 @@ button:not(.active):hover {
 /****************** Account Page ****************/
 
 .account-page-wrapper{
-  height: 80vh;
+  height: 90vh;
 }
 
 .account-page-wrapper h2{
@@ -760,6 +760,40 @@ button:not(.active):hover {
   padding: 20px;
   gap: 10px;
 
+}
+
+/******************Responsive design (Account page)***********/
+@media screen and (max-width: 430px) {
+  .account-page-inner {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+  }
+  .account-page-wrapper {
+    height: auto;
+    max-height: fit-content;
+  }
+  .change-credentials-form input {
+    width: 40vw;
+  }
+  .change-credentials-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .account-page-inner .upload-comics-wrapper button {
+    margin: 10px;
+  }
+  .change-credentials-form {
+    font-size: 13px;
+    align-self: start;
+    width: auto;
+    max-width: 90vw;
+  }
+  .change-credentials-form input {
+    width: 30vw;
+    font-size: 12px;
+  }
+  
 }
 
 /*********************** Upload Comics Page ******************/
@@ -959,7 +993,7 @@ button:not(.active):hover {
     gap: 10px;
     max-width: 100%;
     font-size: 15px;
-    margin: 20px;
+    margin: 20px auto;
     align-items: center;
     justify-content: center;
     height: auto;
@@ -1054,6 +1088,56 @@ button:not(.active):hover {
   text-align: start;
   margin: 0;
   margin-left: 20px;
+}
+
+/**********Responsive Signup Page***************/
+@media screen and (max-width: 430px) {
+  .signup-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+    font-size: 15px;
+    margin: 20px auto;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+  .signup-wrapper form {
+    display: flex;
+    flex-direction: column;
+  }
+  .signup-wrapper label, .signup-wrapper form label {
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+  .signup-wrapper input {
+    padding: 8px;
+    font-size: 15px;
+    width: 90%;
+    margin: 10px;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+  }
+  .signup-button {
+    width: 100%;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 8px;
+  }
+  .direct-to-login {
+    width: 77%;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 8px;
+  }
 }
 
 /**********Comic*************/
@@ -1194,6 +1278,51 @@ button:not(.active):hover {
   justify-self: center;
 }
 
+/*************Responsive Design (Comics)**************/
+@media screen and (max-width: 430px) {
+  .comic-card {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 10px;
+    height: auto;
+  }
+  .comic-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    background-color: var(--theme-background-color);
+    margin: 10px;
+    margin-bottom: 10px;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 0;
+    position: relative;
+  }
+  .comic-title {
+    font-size: 12px;
+  }
+  .comic-cover {
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+  }
+  .bookmark-page-wrapper .container{
+    height: auto;
+  }
+  
+  .comics-page-wrapper .container{
+    height: auto;
+  }
+  .comic-filter-wrapper{
+    background-color: var(--theme-secondary-background-color);
+    border-radius: 8px;
+    height: auto;
+    padding: 10px;
+  }
+}
 
 /*************** Specific Chapter ****************/
 

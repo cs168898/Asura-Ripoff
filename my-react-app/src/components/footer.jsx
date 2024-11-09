@@ -7,9 +7,7 @@ function Footer(){
         <div className='footer-wrapper'>
             <div className='footer-bar'>
                 <ul>
-                    <li><a href="/legal">Privacy Policy</a></li>
-                    <li><a href="/legal">Terms of Service</a></li>
-                    <li><a href="/legal">Copyright</a></li>
+                    <li><a href="mailto:/">Contact Us</a></li>
                 </ul>
             </div>
             

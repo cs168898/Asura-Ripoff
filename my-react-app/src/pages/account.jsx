@@ -380,8 +380,9 @@ function Account(){
                 <div className="logout-button">
                 <button onClick={handleLogout}> Log Out</button>
             </div>
-            <Footer />
         </div>
+        
+        <Footer />
 
         
 
