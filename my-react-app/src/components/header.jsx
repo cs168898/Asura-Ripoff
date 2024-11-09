@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import personImg from '../assets/person.png';
 import asurascan from '../assets/Site-logo.webp';
 import axios from 'axios';
+import { FaBars } from 'react-icons/fa';
+
 
 import useUserSession from './check_session';
 
@@ -16,9 +18,23 @@ function Header(){
     const [results, setResults] = useState([]); // State for search results
     const [showResults, setShowResults] = useState(false); // Controls the popup visibility
     const { loggedIn, userId } = useUserSession(); // Destructure the session data
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // State to track if the screen is mobile size
+    const [menuOpen, setMenuOpen] = useState(false); // State for managing mobile menu visibility
+
     console.log(`User is logged in: ${loggedIn}, User ID: ${userId}`); // For debugging
     
-    
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     // Fetch results from the API
     const fetchResults = async (query) => {
@@ -48,8 +64,9 @@ function Header(){
     // Close the popup when clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (!event.target.closest('.search-bar')) {
-                setShowResults(false); // Hide the results popup
+            if (!event.target.closest('.search-bar') && !event.target.closest('.hamburger-menu')) {
+                setShowResults(false);
+                setMenuOpen(false); // Close the menu when clicking outside
             }
         };
         document.addEventListener('click', handleClickOutside);
@@ -76,7 +93,7 @@ function Header(){
         }
     }, [loggedIn]);
     const handleFileChange = (e) => {
-        setProfilePicture(e.target.files[0]);
+        setProfilePicUrl(e.target.files[0]);
     };
 
     return(
@@ -88,19 +105,36 @@ function Header(){
                 </a>
             </div>
             <div className='nav-bar'>
-                <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/bookmarks">Bookmarks</Link>
-                    </li>
-                    <li>
-                        <Link to="/comics">Comics</Link>
-                    </li>
-                </ul>
-                </nav>
+                {/* if it is mobile, load hamburger menu */}
+                {isMobile ? (
+                    <div className="hamburger-menu">
+                         <FaBars onClick={toggleMenu} />
+                        {menuOpen && (
+                            <div className="mobile-menu">
+                                <nav>
+                                    <Link to="/">Home</Link>
+                                
+                                    <Link to="/bookmarks">Bookmarks</Link>
+                                
+                                    <Link to="/comics">Comics</Link>
+                                </nav>
+                            </div>
+                        )}
+                    </div>
+                ) : /* else */ (<nav> 
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/bookmarks">Bookmarks</Link>
+                        </li>
+                        <li>
+                            <Link to="/comics">Comics</Link>
+                        </li>
+                    </ul>
+                    </nav>)}
+                
             </div>
             <div className='searchbar-and-avatar'>
 

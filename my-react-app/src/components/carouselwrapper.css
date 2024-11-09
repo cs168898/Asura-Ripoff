@@ -223,6 +223,20 @@
     z-index: 998;
 }
 
+/**************** Responsive Design for Phone (Carousel) ********************/
+@media screen and (max-width: 430px) {
+
+ .carousel-slide .cover-picture img{
+    width: 200px;
+    margin-left: 10px;
+    height: auto;
+ }
+
+ .carousel-wrapper .notice{
+    display: none;
+ }
+}
+
 
 
 /*************** Variables **************/

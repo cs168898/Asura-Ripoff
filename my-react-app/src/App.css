@@ -9,6 +9,17 @@
   background-color: black;
 }
 
+@media screen and (max-width: 430px) {
+
+  :root{
+    font-size: small;
+  }
+
+  :root input::placeholder{
+    font-size: small;
+  }
+}
+
 /* Make the body full height */
 html, body {
   height: 100%;
@@ -160,7 +171,8 @@ button:not(.active):hover {
   }
 
   .logo img {
-    width: 100vw;
+    max-width: 50px;
+    height: auto;
     
 }
 
@@ -186,6 +198,33 @@ button:not(.active):hover {
     width: 10vw;
     border-radius: 50%; /* Makes the image circular if it's square */
 }
+
+.hamburger-menu svg{
+  margin-right: 20px;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 70px; /* Adjust based on your header height */
+  left: 0;
+  background-color: var(--theme-secondary-background-color);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  height: auto;
+  width: 100%;
+}
+.mobile-menu nav a{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 }
 
 /************************************************ Home Page **********************************************/
@@ -500,8 +539,38 @@ button:not(.active):hover {
 
   .main-content{
     margin-top: 20px;
+    padding: 10px;
+  }
+  .main-content-inner .items-grid{
+    grid-template-columns: 1fr 1fr;
   }
 
+  .main-content-inner .item img{
+    width: 100px;
+    height: auto;
+  }
+
+  .title-wrapper h2{
+    margin: 0;
+
+  }
+
+  .title-wrapper{
+    max-height: 50px;
+  }
+  .results-popup{
+    width: 200px;
+
+  }
+  .results-popup img{
+    width: 50px;
+    height: auto;
+
+  }
+
+  .carousel-wrapper .video-popup{
+    display: none;
+  }
 }
 
 
@@ -673,38 +742,35 @@ button:not(.active):hover {
 
 @media screen and (max-width: 430px) {
 
-.comic-info{
+.comic-info .upper-content{
   display: flex;
   flex-direction: column;
   height: auto;
-}
-
-.comic-info .cover-picture{
   justify-content: center;
-  text-align: center;
+  
 }
 
-.comic-info .title{
-  text-align: center;
-}
-
-.comic-info .description{
-  text-align: center;
-}
-
-.comic-info .button-wrapper{
-  flex-direction: column;
-  align-items: center;
-}
-
-.comic-info button{
-  width: 80vw;
-}
 
 .comic-chapters .header{
   width: 30vw;
 }
 
+
+
+.comic-info .cover-picture img{
+  width: 200px;
+  height: auto;
+}
+
+.comic-info .container{
+  margin: 0;
+  width: 95%;
+  font-size: small;
+}
+
+.comic-info .container button{
+  width: 50%;
+}
 
 }
 
@@ -1382,6 +1448,16 @@ button:not(.active):hover {
   height: 5vh;
 }
 
+@media screen and (max-width: 430px) {
+  .specific-chapter-wrapper img{
+    width: 100%;
+  }
+
+  .specific-chapter-wrapper .content{
+    border: none;
+  }
+}
+
 /***************************** subscription modal css ***********************/
 
 .merchants{
@@ -1497,6 +1573,29 @@ button:not(.active):hover {
   border-radius: 8px;
 }
 
+@media screen and (max-width: 430px) {
+  .upload-comic-page-wrapper{
+    font-size: small;
+    margin: 0;
+  }
+
+  .upload-comic-page-wrapper label{
+    font-size: small;
+  }
+
+  .upload-comic-page-wrapper input{
+    margin: 10px;
+  }
+
+  .upload-comic-page-wrapper textarea{
+    height: 100px;
+  }
+
+  .upload-comic-page-wrapper input{
+   font-size: small;
+  }
+}
+
 /********** Admin Page *********/
 
 .admin-panel-wrapper{
@@ -1591,6 +1690,47 @@ button:not(.active):hover {
 
 .premium-admin-container button{
   margin-top: 20px;
+}
+
+
+@media screen and (max-width: 430px) {
+  .admin-panel-wrapper{
+    width: 100%;
+    font-size: x-small;
+  }
+
+  .admin-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .admin-wrapper form{
+    padding: 10px;
+  }
+  
+  .update-comics{
+    display: grid;
+    grid-auto-rows: minmax(30px, auto); /* Rows have a minimum height of 30px but can grow based on content */
+
+  }
+
+  .admin-panel-wrapper input{
+    width: 200px;
+    height: auto;
+  }
+
+  .admin-panel-wrapper textarea{
+    width: 200px;
+  }
+  .admin-wrapper form{
+    max-width: 100%;
+  }
+
+  .premium-admin-container input{
+    width: 50%;
+    margin-top: 10px;
+  }
+  
 }
 
 
