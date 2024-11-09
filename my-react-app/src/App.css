@@ -772,7 +772,6 @@ button:not(.active):hover {
 }
 
 .account-page-inner .upload-comics-wrapper button {
-  color: white ;
   padding: 8px 10px;
   border: none;
   border-radius: 3px;
