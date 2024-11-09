@@ -806,7 +806,7 @@ button:not(.active):hover {
 /****************** Account Page ****************/
 
 .account-page-wrapper{
-  height: 90vh;
+  height: auto;
 }
 
 .account-page-wrapper h2{
