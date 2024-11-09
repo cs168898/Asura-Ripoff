@@ -426,6 +426,10 @@ button:not(.active):hover {
   color: black;
 }
 
+.sidebar .button-wrapper{
+  text-align: center;
+}
+
 
 .sidebar .button-wrapper button{
   text-align: center;
