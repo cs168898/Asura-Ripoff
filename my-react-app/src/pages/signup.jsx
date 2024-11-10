@@ -18,6 +18,10 @@ function SignUp() {
     const [passwordError, setPasswordError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+
+   
 
     // Validation functions
     const validateUsername = (username) => {
@@ -67,22 +71,30 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setLoading(true); // Start loading when submit is clicked
+
+
+      
         // Validation checks
         if (formData.username.length < 4) {
+            setLoading(false); // Stop loading if validation fails
             return;
         }
 
         // Matches email extensions between 2 to 4 characters
         const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/; 
         if (!emailPattern.test(formData.email)) {
+            setLoading(false); 
             return;
         }
 
         if (formData.password.length < 8) {
+            setLoading(false); 
             return;
         }
 
         if (formData.password !== formData.confirmPassword) {
+            setLoading(false); 
             return;
         }
 
@@ -94,11 +106,19 @@ function SignUp() {
             );
             setMessage(response.data.message);
             if (response.data.success) {
-                navigate('/login');
+                setLoading(false); // Stop loading after getting a response
+                setMessage("Registration successful. Redirecting to login...");
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000); // Redirect after 2 seconds
+            } else{
+                setMessage(response.data.message); // Show error message
+                setLoading(false); 
             }
         } catch (error) {
             console.error("Error during registration:", error);
             setMessage("An error occurred. Please try again.");
+            setLoading(false); 
         }
     };
 
@@ -106,6 +126,7 @@ function SignUp() {
         <>
             <Header />
             <div className="signup-wrapper">
+            {message && <p className={`message ${message.includes("successful") ? "success" : "error"}`}>{message}</p>}
                 <form onSubmit={handleSubmit}>
                     <b>Username: </b>
                     <input 
@@ -155,11 +176,11 @@ function SignUp() {
                     />
                     {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
 
-                    <button type="submit" className="signup-button">Sign Up now</button>
+                    <button type="submit" className="signup-button" disabled={loading}>
+                        {loading ? 'Processing...' : 'Sign Up now'}
+                    </button>
                 </form>
-
                 
-
                 <p><b>OR</b></p>
                 <button onClick={() => navigate('/Login')} className="direct-to-login">Click here to Login</button>
             </div>

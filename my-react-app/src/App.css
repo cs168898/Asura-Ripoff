@@ -1117,6 +1117,21 @@ button:not(.active):hover {
   border-radius: 8px;
 }
 
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
 .signup-wrapper form {
   display: grid;
   grid-template-columns: 30vw 40vw;
