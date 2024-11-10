@@ -41,8 +41,8 @@ function Home() {
                 .sort((a, b) => parseInt(b.chapters) - parseInt(a.chapters))
                 .slice(0, 5)
             );
-        } else {
-            setSortedComics(comics);
+        } else if (buttonId ==='all'){
+            setSortedComics([...comics].slice(0, 10));
         }
         
     };
@@ -135,7 +135,7 @@ function Home() {
                         
                     </div>
                     <div className="items-grid">
-                    {sortedComics.map((comic, index) => (
+                    {sortedComics.slice(0, 10).map((comic, index) => (
                     <div key={comic.comic_id} className="comic-item">
                         <div className="item">
                             <div className="ranking">
