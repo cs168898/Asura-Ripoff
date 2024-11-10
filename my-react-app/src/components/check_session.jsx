@@ -16,7 +16,7 @@ function useUserSession() {
             })
             .catch(error => {
                 console.error("Error fetching session data:", error);
-                setSession({ loggedIn: false, userId: null, userId:null, loading: false }); // Set as not logged in on error
+                setSession({ loggedIn: false, userId: null, username:null, loading: false }); // Set as not logged in on error
 
             });
     }, []);
