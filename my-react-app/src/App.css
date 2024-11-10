@@ -1228,11 +1228,11 @@ button:not(.active):hover {
 }
 
 .bookmark-page-wrapper .container{
-  height: 100vh;
+  height: auto;
 }
 
 .comics-page-wrapper .container{
-  height: 100vh;
+  height: auto;
 }
 
 .container{
@@ -1252,7 +1252,8 @@ button:not(.active):hover {
 .comic-filter-wrapper{
   background-color: var(--theme-secondary-background-color);
   border-radius: 8px;
-  height: 100vh;
+  height: auto;
+  padding: 10px;
 }
 .filter-bar{
   text-align: end;
