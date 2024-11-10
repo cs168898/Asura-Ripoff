@@ -22,7 +22,7 @@ function Specific_Chapter() {
             axios.get(`http://localhost/comic_backend/get_chapter_images.php?comic_id=${comicId}&chapter_id=${chapterId}`)
                 .then(response => {
                     const { data, chapter_number, prev_chapter_id, next_chapter_id } = response.data;
-
+                    console.log(response.data)
                     setComicImages(data || []);
                     setChapterNumber(chapter_number);
                     setPrevChapterId(prev_chapter_id);

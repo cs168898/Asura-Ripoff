@@ -714,11 +714,15 @@ button:not(.active):hover {
   
 }
 
+.comic-chapters .chapter-item {
+  margin: 10px;
+}
+
 .restricted-text{
   width: 100%;
   cursor: pointer;
   display: block;
-  padding: 10px;
+  padding-bottom: 20px;
 }
 
 .comic-chapters .chapter-item p{

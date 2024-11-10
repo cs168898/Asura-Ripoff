@@ -31,7 +31,7 @@ function Account(){
         if (session.loggedIn) {
             axios.get('http://localhost/comic_backend/is_admin.php', { withCredentials: true })
                 .then(response => {
-                    console.log("Admin Check Response:", response.data); // Log full response for debugging
+                    console.log("Admin Check Response:", response.data); // Log full response 
                     if (response.data.success) {
                         setIs_admin(prevState => ({ ...prevState, is_admin: response.data.is_admin }));
                     } else {
