@@ -20,7 +20,12 @@ function Specific_Comic(){
     const closeModal = () => setIsModalOpen(false);
 
     const session = useUserSession(); // Assume useUserSession returns an object with login status
+
+    const [comment, setComment] = useState(null);
     
+
+    
+
     useEffect(() => {
         
         if (session.loggedIn) {
@@ -120,6 +125,32 @@ function Specific_Comic(){
 
     const latestChapter = comic ? comic[comic.length - 1] : null;
 
+    const handleComment = () => {
+
+        console.log("Comic ID test:", comicId); // Check if comicId is defined here
+        
+        axios.post(
+            'http://localhost/comic_backend/insert_comments.php',
+            { comic_id: comicId}, // Send action as part of the data
+            { withCredentials: true }
+        )
+        .then(response => {
+            if (response.data.success) {
+                console.log(`the comment is ${response.data.comment}`)
+                setBookmarked(response.data.comment);
+            }
+        })
+        .catch(error => {
+            // Check if the error is due to unauthorized access (401 status)
+            if (error.response && error.response.status === 401) {
+                console.error("Error:", error.response.data.message);
+                alert(error.response.data.message); // Show alert to the user
+            } else {
+                console.error(`Error toggling ${type}:`, error);
+            }
+        });
+    };
+
     return(
         <>
         <Header/>
@@ -202,6 +233,16 @@ function Specific_Comic(){
                     <Subscription_Modal isOpen={isModalOpen} onRequestClose={closeModal}>
                     
                     </Subscription_Modal>
+                </div>
+            </div>
+            <div className="comments-wrapper">
+                <div className="comment-input">
+                    <input type="text" placeholder='Input comments'/>
+                    <button onClick={handleComment}>Comment</button>
+                </div>
+                <div className="comment-section">
+                    {/* Insert specific comments based on comicID */}
+
                 </div>
             </div>
         </div>
