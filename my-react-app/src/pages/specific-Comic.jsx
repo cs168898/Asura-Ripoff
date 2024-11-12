@@ -21,8 +21,8 @@ function Specific_Comic(){
 
     const session = useUserSession(); // Assume useUserSession returns an object with login status
 
-    const [comment, setComment] = useState(null);
-    
+    const [comment, setComment] = useState('');
+    const [allComments, setallComments] = useState([]);
 
     
 
@@ -101,43 +101,93 @@ function Specific_Comic(){
             // Make the API request only if comicId is available
             axios.get(`http://localhost/comic_backend/get_comic_details.php?comic_id=${comicId}`)
                 .then(response => {
-                    setComic(response.data.data); // Assuming the data is nested in `data`
                     console.log(response.data);
+                    setComic(response.data.data); // Set comic details correctly
                     setLoading(false); // Set loading to false after data is loaded
                 })
                 .catch(error => {
-                    console.error("Error fetching comic details:", error);
+                    console.error("Error fetching comments:", error);
                     setLoading(false); // Set loading to false even if there’s an error
                 });
         } else{
-            console.log("No comic ID detected")
+            console.log("No comments detected")
         }
     }, [comicId]);
+
+      /*************************************** COMMENTS SECTION  *********************************/
+
+    useEffect(() => {
+
+            
+        axios.get(`http://localhost/comic_backend/get_comments.php?comic_id=${comicId}`)
+            .then(response => {
+                const comments = response.data.comments || [];
+                setallComments(comments);
+                console.log(`the comments is${comments}`);
+                console.log(`${response.message}`)
+            })
+            .catch(error => {
+                console.error("Error fetching comic details:", error);
+                
+            });
+    
+    }, [comicId]);
+
+    /************************ END OF COMMENTS SECTION  ************************/
 
     // If still loading, display loading message
     if (loading) {
         return <p>Loading...</p>;
     }
-
-    if (!comic) {
-        return <p>Loading...</p>;
+    
+    if (!comic || comic.length === 0) {
+        return <p>No comic found.</p>;
     }
 
     const latestChapter = comic ? comic[comic.length - 1] : null;
 
+
+    /*************************************** COMMENTS SECTION  *********************************/
+
+   
+
     const handleComment = () => {
 
+
         console.log("Comic ID test:", comicId); // Check if comicId is defined here
-        
+        if (comment.trim() === ''){
+            alert("comments cannot be empty");
+            return;
+        }
+
+        // check if user is logged in
+        if (!session.loggedIn){
+            alert("Please log in before commenting");
+            return;
+        }
+
         axios.post(
             'http://localhost/comic_backend/insert_comments.php',
-            { comic_id: comicId}, // Send action as part of the data
+            { comic_id: comicId, comment: comment}, // Send the data to back end and Set the comment back end variable with the value of front end comment variable
             { withCredentials: true }
         )
         .then(response => {
             if (response.data.success) {
                 console.log(`the comment is ${response.data.comment}`)
-                setBookmarked(response.data.comment);
+                const newComment = {
+                   
+                    username: session.username, // Assuming you have this info
+                    profile_picture: session.profile_picture, // Assuming you have this info
+                    date_posted: new Date().toISOString(), // Or use response.data.date_posted if available
+                    comment: comment,
+                };
+                // Update the allComments state
+                setallComments([...allComments, newComment]);
+
+                // Clear the input field
+                setComment('');
+            } else {
+                alert("Failed to post comment.");
             }
         })
         .catch(error => {
@@ -146,10 +196,13 @@ function Specific_Comic(){
                 console.error("Error:", error.response.data.message);
                 alert(error.response.data.message); // Show alert to the user
             } else {
-                console.error(`Error toggling ${type}:`, error);
+                console.error(`Error posting comment`, error);
             }
         });
+    
     };
+
+    /************************ END OF COMMENTS SECTION  ************************/
 
     return(
         <>
@@ -236,13 +289,32 @@ function Specific_Comic(){
                 </div>
             </div>
             <div className="comments-wrapper">
-                <div className="comment-input">
-                    <input type="text" placeholder='Input comments'/>
-                    <button onClick={handleComment}>Comment</button>
-                </div>
+                
                 <div className="comment-section">
                     {/* Insert specific comments based on comicID */}
-
+                    <h2>Comments:</h2>
+                    <div className="comment-input">
+                        <input type="text" placeholder='Comment something' value={comment} onChange={(e) => setComment(e.target.value)}/>
+                        <button onClick={handleComment}>Comment</button>
+                    </div>
+                        {allComments.map((cmt) => (
+                            <div className="comment-card" key={cmt.comment_id}>
+                                <div className="profile-picture">
+                                    <img src={`http://localhost/${cmt.profile_picture}`} alt={`${cmt.username}'s profile picture`} />
+                                </div>
+                                <div className="username-comment-wrapper">
+                                    <div className="username">
+                                        <p>@{cmt.username}</p>
+                                        <p className='date-posted'>{cmt.date_posted}</p>
+                                    </div>
+                                    <div className="comment">
+                                        <p>{cmt.comment}</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        ))}
+                        
                 </div>
             </div>
         </div>

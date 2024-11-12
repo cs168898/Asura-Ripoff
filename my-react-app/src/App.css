@@ -754,6 +754,65 @@ button:not(.active):hover {
   
 }
 
+.comment-input{
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-input input{
+  width: inherit;
+  margin: 0 20px 0 20px;
+  text-align: start;
+  font-size: medium;
+  padding: 5px;
+}
+
+.comment-input button{
+  width: 100px;
+  text-align: center;
+  align-self: flex-end;
+  margin: 10px 20px 0 0;
+}
+
+.comment-section h2{
+  margin-left: 20px;
+}
+
+.comment-card{
+  background-color: var(--theme-secondary-background-color);
+  display: flex;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.comment-card .profile-picture img{
+  width: 100px;
+  height: 100px;
+}
+
+.username-comment-wrapper{
+  margin-left: 20px;
+}
+
+.username-comment-wrapper .username{
+  border-radius: 20px;
+  text-align: center;
+  width: fit-content;
+  display: flex;
+  
+}
+
+.username .date-posted {
+  color: var(--asura-description-text-color);
+}
+
+.username-comment-wrapper .username p{
+  padding: 5px;
+  font-weight: bold;
+}
+
+
+
 /************************ Responsive Design (Specific Comic Page) **************************/
 
 @media screen and (max-width: 430px) {
