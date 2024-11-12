@@ -79,16 +79,20 @@ function Account(){
     const validateUsername = (username) => {
         if (username.length < 4) {
             setUsernameError("Username must be at least 4 characters long.");
+            return false;
         } else {
             setUsernameError('');
+            return true;
         }
     };
 
     const validatePassword = (password) => {
         if (password.length < 8) {
             setPasswordError("Password must be at least 8 characters long.");
+            return false;
         } else {
             setPasswordError('');
+            return true;
         }
     };
 
@@ -96,8 +100,10 @@ function Account(){
         const emailRegex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/;
         if (!emailRegex.test(email)) {
             setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
+            return false;
         } else {
             setEmailError('');
+            return true;
         }
     };
 
@@ -163,15 +169,7 @@ function Account(){
 
     const handleUsernameSubmit = async (e) => {
         e.preventDefault();
-        if (!validateUsername(credentials.newUsername)) {
-
-            setUsernameError("Username must be at least 4 characters long.");
-
-            return;
-        }
-        
-        // this is to clear the error state if the validation passes
-        setUsernameError(''); 
+        if (!validateUsername(credentials.newUsername)) return;
 
         try {
             const response = await axios.post(
@@ -193,12 +191,7 @@ function Account(){
     const handlePasswordSubmit = async (e) => {
         e.preventDefault();
 
-        if (!validatePassword(credentials.newPassword)) {
-            setPasswordError("Password must be at least 8 characters long.");
-            return;
-        }
-
-        setPasswordError('')
+        if (!validatePassword(credentials.newPassword)) return;
 
         try {
             const response = await axios.post(
@@ -220,12 +213,7 @@ function Account(){
     const handleEmailSubmit = async (e) => {
         e.preventDefault();
 
-        if (!validateEmail(credentials.newEmail)) {
-            setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
-            return;
-        }
-
-        setEmailError('');
+        if (!validateEmail(credentials.newEmail)) return;
 
         try {
             const response = await axios.post(
@@ -355,7 +343,6 @@ function Account(){
                             onChange={handleInputChange}
                             placeholder="Enter new email"
                         />
-                        
                         <button type="submit">Change</button>
                         {emailError && <p className="error-message">{emailError}</p>}
                     </form>
