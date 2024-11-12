@@ -91,6 +91,7 @@ button:not(.active):hover {
   align-items: center;
   gap: 10px;
   justify-self: end;
+  color: white;
 }
 
 .searchbar-and-avatar input{
@@ -98,6 +99,7 @@ button:not(.active):hover {
   background-color: var(--theme-background-color);
   width: 10vw;
   height: 3vh;
+  color: white;
 }
 
 .searchbar-and-avatar img{
