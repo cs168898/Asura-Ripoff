@@ -41,7 +41,8 @@ function SignUp() {
     };
 
     const validateEmail = (email) => {
-        const emailRegex = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/;
+        const emailRegex = /^[a-zA-Z0-9.-]+@(localhost|[a-zA-Z0-9.-]{1,5})(?:\.[a-zA-Z0-9]{2,3}){0,2}$/
+;
         if (!emailRegex.test(email)) {
             setEmailError("Please enter a valid email with 2-4 extensions (e.g., .com, .net).");
         } else {
@@ -82,7 +83,7 @@ function SignUp() {
         }
 
         // Matches email extensions between 2 to 4 characters
-        const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]{1,5}(?:\.[a-zA-Z0-9]{2,3}){1,2}(?:\.[a-zA-Z0-9]{2,3}){0,1}$/; 
+        const emailPattern = /^[a-zA-Z0-9.-]+@(localhost|[a-zA-Z0-9.-]{1,5})(?:\.[a-zA-Z0-9]{2,3}){0,2}$/; 
         if (!emailPattern.test(formData.email)) {
             setLoading(false); 
             return;
